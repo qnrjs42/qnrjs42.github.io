@@ -1,10 +1,13 @@
 # main links
 main:
-  - title: "블로그 방문하기"
-    url: https://qnrjs42.github.io/
-    title: "dongju"
-    url: /categories/dongju/
+  - title: "Javascript"
+    url: /categories/javascript/
+
+  - title: "React"
+    url: /categories/react/
+
   - title: "Tags"
     url: /tags/
+
   - title: "About"
     url: /about/
