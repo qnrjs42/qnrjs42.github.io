@@ -1,0 +1,24 @@
+---
+title:  "[Design] css flex order"
+excerpt: "order"
+
+categories:
+  - Design
+tags:
+  - Design
+  - CSS
+last_modified_at: 2020-08-17T000:00:00-:00
+---
+
+
+반응형 웹 구현 시
+첫 번째 인덱스와 두 번째 인덱스가 화면이 작아질 때
+보통 첫 번째 인덱스가 위에, 두 번째 인덱스가 아래에 배치되는데
+
+css flex order를 사용하면 두 번째 인덱스가 위에, 첫 번째 인덱스가 아래로 향하게 할 수 있다.
+
+
+
+Link: [w3schools.com][link]
+
+[link]: https://www.w3schools.com/cssref/css3_pr_order.asp "Go"
