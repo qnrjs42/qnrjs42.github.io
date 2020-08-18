@@ -6,8 +6,7 @@ categories:
   - Design
 tags:
   - Design
-  - Github-Markdwon
-  - 이중 중괄호
+  - Github Markdwon-이중 중괄호
 last_modified_at: 2020-08-19T000:00:00-:00
 ---
 
