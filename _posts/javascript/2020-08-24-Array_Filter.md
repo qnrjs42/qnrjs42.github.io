@@ -19,7 +19,7 @@ forEach()처럼 사용
 
 참고 Link: [Choi Boo - Array_forEach()][linkcb]<br />
 
-[linkcb]: https://qnrjs42.github.io/javascript_posts/Array_ForEach/ "Go"
+[linkcb]: https://qnrjs42.github.io/javascript/Array_ForEach/ "Go"
 
 배열의 엘리먼트를 하나씩 읽어가면서
 콜백 함수에서 true 반환하면 현재 읽은 엘리먼트를 반환한다.
