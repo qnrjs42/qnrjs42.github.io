@@ -1,5 +1,5 @@
 ---
-title:  "[React, Nextjs] Nextjs 동적 라우팅"
+title: "[React, Nextjs] Nextjs 동적 라우팅"
 excerpt: "@loadable/component"
 
 categories:
@@ -17,15 +17,15 @@ last_modified_at: 2020-08-25T000:00:00-:00
 
 정적으로만 생각하고 동적으로 생각을 안 해봤는데 다음 날 갑자기 동적 라우팅이 생각이 났다.
 
-필요한 URL   
-localhost:3000/user/index   
-localhost:3000/user/manage_url   
+필요한 URL  
+localhost:3000/user/index  
+localhost:3000/user/manage_url  
 ...
 
 즉, user 폴더 내에서 여러 컴포넌트들을 불러오는 것이다.
 
-
 ## 0. 모듈 설치하기
+
 ```react
 {% raw %}
 // 필요한 모듈
@@ -35,6 +35,7 @@ npm i next
 ```
 
 ## 1. 컴포넌트 메뉴에서 설정하기
+
 ```react
 {% raw %}
 // /front/components/SiderMenu.js
@@ -59,7 +60,7 @@ href="/user/[url]"에서 [url]은
 as={`/user/index`}에서 as 키워드는
  라우터에게 넘겨줄 뒷자리 url를 뜻함
 
-예) 
+예)
 as={`/user/index`}
 localhost:3000/user/index
 
@@ -69,9 +70,10 @@ localhost:3000/user/manager_url
 
 ## 2. 라우터에서 어떤 링크가 왔는지 검증
 
-#### 파일 구조   
-컴포넌트: /front/components/SiderMenu.js   
-라우터:   /front/pages/user/[url].js
+#### 파일 구조
+
+컴포넌트: /front/components/SiderMenu.js  
+라우터: /front/pages/user/[url].js
 
 ```react
 {% raw %}
@@ -120,13 +122,17 @@ export default UserIndex;
 
 {% endraw %}
 ```
+
 <br />
 
 참고 Link: [https://github.com/gregberge/loadable-components][link]
 
 [link]: https://github.com/gregberge/loadable-components "Go"
 
-
 참고 Link: [https://jcon.tistory.com/m/128?category=798379][link2]
 
 [link2]: https://jcon.tistory.com/m/128?category=798379 "Go"
+
+참고 Link: [https://velog.io/@ansrjsdn/Next.js-%EB%9D%BC%EC%9A%B0%ED%8C%85][link3]
+
+[link3]: https://velog.io/@ansrjsdn/Next.js-%EB%9D%BC%EC%9A%B0%ED%8C%85 "Go"
