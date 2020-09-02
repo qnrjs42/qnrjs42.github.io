@@ -64,9 +64,3 @@ const ChildComponent = ({ onModalDisplay }) => {
 export default ChildComponent;
 {% endraw %}
 ```
-
-<br />
-
-참고 Link: [https://dev.to/rsanchezp/next-js-and-styled-components-style-loading-issue-3i68][link]
-
-[link]: https://dev.to/rsanchezp/next-js-and-styled-components-style-loading-issue-3i68 "Go"
