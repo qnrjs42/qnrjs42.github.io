@@ -1,6 +1,11 @@
 ---
-title:  "[Javascript] Array - filter()"
+title: "[Javascript] Array - filter()"
 excerpt: "Array.filter(function(){})"
+
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
 
 categories:
   - Javascript
@@ -10,7 +15,6 @@ tags:
   - filter
 last_modified_at: 2020-08-24T000:00:00-:00
 ---
-
 
 ## filter()
 
@@ -27,6 +31,7 @@ forEach()처럼 사용
 조건에 맞는 엘리먼트를 추려낼 때 유용하다.
 
 ### 1. true일 때 엘리먼트 반환
+
 ```javascript
 {% raw %}
 var value = [10, 20, 30, 40];
@@ -49,7 +54,6 @@ fn 콜백 함수 리턴 값 중
 el이 15보다 클 경우 true를 반환하기 때문에
 true가 되면 현재 엘리먼트를 반환한다.
 ```
-
 
 <br /><br /><br />
 참고 Link: [인프런 - 자바스크립트 비기너: 튼튼한 기본 만들기][link]<br />

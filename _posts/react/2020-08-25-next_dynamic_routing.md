@@ -2,6 +2,11 @@
 title: "[React, Nextjs] Nextjs 동적 라우팅"
 excerpt: "@loadable/component"
 
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
 categories:
   - React
 tags:
@@ -70,8 +75,7 @@ localhost:3000/user/manager_url
 
 ## 2. 라우터에서 어떤 링크가 왔는지 검증
 
-#### 파일 구조
-
+_파일 구조_
 컴포넌트: /front/components/SiderMenu.js  
 라우터: /front/pages/user/[url].js
 

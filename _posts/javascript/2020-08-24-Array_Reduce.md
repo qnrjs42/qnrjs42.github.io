@@ -1,6 +1,11 @@
 ---
-title:  "[Javascript] Array - reduce()"
+title: "[Javascript] Array - reduce()"
 excerpt: "Array.reduce(function(){})"
+
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
 
 categories:
   - Javascript
@@ -11,7 +16,6 @@ tags:
 last_modified_at: 2020-08-24T000:00:00-:00
 ---
 
-
 ## reduce()
 
 forEach()처럼 시맨틱 접근
@@ -20,12 +24,13 @@ forEach()처럼 시맨틱 접근
 파라미터 작성 여부에 따라 처리가 다르다.
 
 ### 1. 첫 번째 파라미터(콜백 함수)만 작성했을 때
+
 ```javascript
 {% raw %}
 var value = [1, 3, 5, 7];
 var fn = function(prev, curr, index, all) {
 	console.log(prev + ", " + curr);
-	
+
 	return prev + curr;
 }
 
@@ -46,7 +51,7 @@ console.log("결과: ", result);
 실행결과 설명
 
 reduce() 첫 번째 파라미터만 작성한 경우
-	
+
 처음 콜백 함수 호출 시
  prev : 인덱스 [0]의 값
  curr : 인덱스 [1]의 값
@@ -62,15 +67,14 @@ reduce() 첫 번째 파라미터만 작성한 경우
 마지막으로 반환된 값을 result에 할당
 ```
 
-
-
 ### 2. 두 번째 파라미터까지 작성했을 때
+
 ```javascript
 {% raw %}
 var value = [1, 3, 5];
 var fn = function(prev, curr, index, all) {
 	console.log(prev + ", " + curr);
-	
+
 	return prev + curr;
 }
 
@@ -91,7 +95,7 @@ console.log("결과: ", result);
 실행결과 설명
 
 reduce() 두 번째 파라미터를 작성한 경우
-	
+
 처음 콜백 함수 호출 시
  prev : 두 번째 파라미터 값
  curr : 인덱스 [0]의 값
@@ -105,7 +109,6 @@ reduce() 두 번째 파라미터를 작성한 경우
 
 마지막으로 반환된 값을 result에 할당
 ```
-
 
 <br /><br /><br />
 참고 Link: [인프런 - 자바스크립트 비기너: 튼튼한 기본 만들기][link]<br />

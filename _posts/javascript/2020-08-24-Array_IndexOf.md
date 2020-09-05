@@ -1,6 +1,11 @@
 ---
-title:  "[Javascript] Array - indexOf()"
+title: "[Javascript] Array - indexOf()"
 excerpt: "Array.indexOf('C', -2)"
+
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
 
 categories:
   - Javascript
@@ -10,7 +15,6 @@ tags:
   - indexOf
 last_modified_at: 2020-08-24T000:00:00-:00
 ---
-
 
 ## indexOf()란
 
@@ -24,6 +28,7 @@ last_modified_at: 2020-08-24T000:00:00-:00
 또한 엘리먼트의 위치를 인덱스라고 한다.
 
 ### 1. 같은 값 찾기
+
 ```javascript
 {% raw %}
 // 1. 값이 같은 엘리먼트가 있으면 검색 종료
@@ -34,8 +39,8 @@ console.log(value.indexOf(5)); // 2
 {% endraw %}
 ```
 
-
 ### 2. 데이터 타입이 다를 때
+
 ```javascript
 {% raw %}
 // 2. 데이터 타입까지 체크
@@ -47,8 +52,8 @@ console.log(value.indexOf("5")); // -1
 {% endraw %}
 ```
 
-
 ### 3. 두 번째 파라미터 입력했을 때
+
 ```javascript
 {% raw %}
 // 3. 두 번째 파라미터의 인덱스부터 검색
@@ -59,8 +64,8 @@ console.log(value.indexOf(5, 3)); // 4
 {% endraw %}
 ```
 
-
 ### 4. String.indexOf()
+
 ```javascript
 {% raw %}
 // 4. String.indexOf()
@@ -70,8 +75,8 @@ console.log("ABCBC".indexOf("C", -2)); // 2
 {% endraw %}
 ```
 
-
 ### 5. Array.indexOf()
+
 ```javascript
 {% raw %}
 // 5. Array.indexOf()
@@ -81,7 +86,6 @@ console.log(list.indexOf("C", -2)); // 4
 // length(5) + -2 = 3, 3번 인덱스부터 "C" 검색
 {% endraw %}
 ```
-
 
 <br /><br /><br />
 참고 Link: [인프런 - 자바스크립트 비기너: 튼튼한 기본 만들기][link]<br />

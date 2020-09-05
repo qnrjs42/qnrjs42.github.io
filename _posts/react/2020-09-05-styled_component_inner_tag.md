@@ -56,11 +56,17 @@ const HomeLayout = () => {
 
 
            /* 태그 안에 태그 안에 태그 */
-           <ButtonWrapper><span>Tag1 <pre>Tag2</pre></span></ButtonWrapper>
+           <ButtonWrapper>
+            <span>
+                Tag1
+                <pre>Tag2</pre>
+            </span>
+           </ButtonWrapper>
 
            /* 크롬 개발자 도구로 봤을 때 구조
              <ButtonWrapper>
-                <span>Tag1
+                <span>
+                    Tag1
                     <pre>Tag2</pre>
                 </span>
              </ButtonWrapper>

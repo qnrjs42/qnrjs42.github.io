@@ -1,6 +1,11 @@
 ---
-title:  "[React, Nextjs] Nextjs 컴포넌트 공유"
+title: "[React, Nextjs] Nextjs 컴포넌트 공유"
 excerpt: "const UserLayout = ({children}) => {}"
+
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
 
 categories:
   - React
@@ -14,10 +19,11 @@ tags:
 last_modified_at: 2020-08-25T000:00:00-:00
 ---
 
-nextjs에서 한 페이지에서 여러 컴포넌트를 공유할 때 여러가지 방법이 있는데   
+nextjs에서 한 페이지에서 여러 컴포넌트를 공유할 때 여러가지 방법이 있는데  
 react - prop을 이용한 방법으로 컴포넌트를 라우터에게 전달하는 방법을 이용하겠다.
 
 ## 1. 컴포넌트에서 prop 전달
+
 ```react
 {% raw %}
 // /front/components/AppLayout.js
@@ -48,8 +54,8 @@ export default AppLayout;
 {% endraw %}
 ```
 
-
 ## 2. 라우터에서 렌더링
+
 ```react
 {% raw %}
 // /front/pages/index.js
