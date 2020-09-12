@@ -15,7 +15,7 @@ last_modified_at: 2020-09-05T000:00:00-:00
 
 span 태그로 스타일을 적용하는 방법도 있지만 태그안에 태그를 적용할 필요가 있을 때 사용한다.
 
-```javascript
+```react
 {% raw %}
 import React from 'react';
 import { Button } from 'antd';
