@@ -18,6 +18,7 @@ antd table에서 rowspan을 사용하려는데 테이블의 데이터가 <br />
 여러 데이터를 합칠 수 있다.
 
 ```react
+{% raw %}
 const columns = [
   {
     title: "name",
@@ -59,6 +60,17 @@ const columns = [
     key: "nickname",
   },
 ];
+
+...
+...
+...
+
+<Table
+  style={{ whiteSpace: "pre" }}
+  columns={columns}
+  dataSource={DataSource}
+/>
+{% endraw %}
 ```
 
 ```javascript
