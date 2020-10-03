@@ -44,12 +44,10 @@ layout: single
     <tr>
         <th><span style="font-size: 22px;">텍스트 에디터</span></th>
         <th><span style="font-size: 22px; font-weight:500;">VSCode</span></th>
-        <th><span style="font-size: 22px; font-weight:500;">Typescript</span></th>
     </tr>
     <tr>
          <th><span style="font-size: 22px;">버전 관리</span></th>
          <th><span style="font-size: 22px; font-weight:500;">Git</span></th>
-         <th><span style="font-size: 22px; font-weight:500;">Next (함수형, Hooks)</span></th>
     </tr>
     <tr>
          <th><span style="font-size: 22px;">OS</span></th>
