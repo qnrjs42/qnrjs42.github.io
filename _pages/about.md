@@ -7,7 +7,12 @@ layout: single
 ## qnrjs42.github.io 블로그
 
 안녕하세요 현재 프론트엔드 엔지니어로 거듭나기 위해 React 기반 사이드 프로젝트를 진행하고 있습니다.<br />
-제 가치관은 <u>1.대충</u> <u>2.빨리</u> <u>3.잘</u> 이며, 이에 뜻은 빠르게 배우고 내 것으로 만들기 위해 다시, 계속 반복하여 습득한다는 뜻입니다.
+
+코드 작성 스타일
+1. 생각나는대로 빠르게 기능 구현
+2. 코드 다듬기
+3. 기능 구현에 어려움이 있으면 검색 및 공부
+4. 3번을 통해 내 것으로 만들기
 
 ---
 
@@ -62,7 +67,9 @@ layout: single
 # 2020
 > * ### ~ 프론트엔드 학습
     - 링크 단축 프로젝트<br />
-        <span style="font-size: 15px; color: #adb5bd">긴 URL을 짧게 줄여주는 서비스, 회원 페이지에서 단축된 링크 관리</span>
+        <span style="font-size: 15px; color: #adb5bd">긴 URL을 짧게 줄여주는 서비스, 회원 페이지에서 단축된 링크 관리<br />
+        [github - qnrjs42/UrlCut_Project][linkcb]</span><br />
+
 
 > * ### Aug - 지인 매장 소개 간단 제작
     - 사용 기술: Naver modoo
@@ -112,3 +119,5 @@ layout: single
 
 > * ### 정보처리기능사 
     - 취득일 : 2015-07
+
+[linkcb]: https://github.com/qnrjs42/UrlCut_Project "Go"
