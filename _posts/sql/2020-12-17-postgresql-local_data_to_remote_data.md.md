@@ -130,6 +130,7 @@ SELECT * FROM realdb.public.real_table;
 
 ```
 // 1.
+// 스키카명은 다르고 테이블명이 같을 때
 local schema (public) !== remote schema (private)
 local table (real_table) === remote table (real_table)
 ->
@@ -147,6 +148,7 @@ pg_restore: error: could not execute query: ERROR:  relation "public.real_table"
 
 ```
 // 2.
+// 스키마명은 같고 테이블명이 다를 때
 local schema (public) === remote schema (public)
 local table (local_table) !== remote table (real_table)
 ->
