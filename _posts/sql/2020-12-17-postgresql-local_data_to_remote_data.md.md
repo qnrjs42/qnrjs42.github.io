@@ -2,6 +2,11 @@
 title:  "[PostgreSQL] local data to remote data"
 excerpt: "로컬 DB 데이터를 원격 DB 테이블에 복사 붙여넣기"
 
+toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
 categories:
   - SQL
 tags:
