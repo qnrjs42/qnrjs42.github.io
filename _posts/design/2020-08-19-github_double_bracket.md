@@ -1,8 +1,13 @@
 ---
-title: "[Design] github markdown 이중 중괄호"
-date: 2020-08-19 00:00:00 +0900
-categories: [Design]
-tags: [Design, Markdwon-이중 중괄호]
+title:  "[Design] github markdown 이중 중괄호"
+excerpt: "이중 중괄호"
+
+categories:
+  - Design
+tags:
+  - Design
+  - Github Markdwon-이중 중괄호
+last_modified_at: 2020-08-19T000:00:00-:00
 ---
 
 

@@ -1,9 +1,19 @@
 ---
 title: "[Javascript] Array - indexOf()"
-date: 2020-08-24 00:00:00 +0900
-categories: [Javascript]
-tags: [Javascript, Array, indexOf]
+excerpt: "Array.indexOf('C', -2)"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - Javascript
+tags:
+  - Javascript
+  - Array
+  - indexOf
+last_modified_at: 2020-08-24T000:00:00-:00
 ---
 
 ## indexOf()란
@@ -17,7 +27,7 @@ toc: true
 
 또한 엘리먼트의 위치를 인덱스라고 한다.
 
-### 같은 값 찾기
+### 1. 같은 값 찾기
 
 ```javascript
 {% raw %}
@@ -29,7 +39,7 @@ console.log(value.indexOf(5)); // 2
 {% endraw %}
 ```
 
-### 데이터 타입이 다를 때
+### 2. 데이터 타입이 다를 때
 
 ```javascript
 {% raw %}
@@ -42,7 +52,7 @@ console.log(value.indexOf("5")); // -1
 {% endraw %}
 ```
 
-### 두 번째 파라미터 입력했을 때
+### 3. 두 번째 파라미터 입력했을 때
 
 ```javascript
 {% raw %}
@@ -54,7 +64,7 @@ console.log(value.indexOf(5, 3)); // 4
 {% endraw %}
 ```
 
-### String.indexOf()
+### 4. String.indexOf()
 
 ```javascript
 {% raw %}
@@ -65,7 +75,7 @@ console.log("ABCBC".indexOf("C", -2)); // 2
 {% endraw %}
 ```
 
-### Array.indexOf()
+### 5. Array.indexOf()
 
 ```javascript
 {% raw %}

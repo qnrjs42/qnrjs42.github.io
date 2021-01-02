@@ -1,22 +1,12 @@
 ---
 title: "[Git, SourceTree] 깃허브 2차인증(2fa) 후 토큰으로 소스트리 로그인 실패 했을 때 (윈도우)"
-excerpt: "맥은 잘 되는데 윈도우가 꼭 안 되더라"
-
+date: 2020-12-19 00:00:00 +0900
+categories: [Git]
+tags: [Git, SourceTree, 2차인증(2fa)]
 toc: true
-toc_sticky: true
-toc_lable: "On This Page"
-toc_icon: "cog"
-
-categories:
-  - Git
-tags:
-  - Git
-  - SourceTree
-  - 2차인증(2fa)
-last_modified_at: 2020-12-19T000:00:00-:00
 ---
 
-## 1. 어휴 윈도우
+## 어휴 윈도우
 
 상황설명: 여태껏 1차 패스워드만 사용하다가 깃허브에서 보안 강화하라는 메일이 날라와 2차 인증을 도입하기로 했다.
 
@@ -28,7 +18,7 @@ last_modified_at: 2020-12-19T000:00:00-:00
 없으면 깃허브가서 테스트용 repository를 빠르게 만든다.<br/>
 repository를 만들고 로컬에서 폴더 생성하고 아무 파일이나 만든다.
 
-### 1-1. 로컬 커밋
+### 로컬 커밋
 
 ```
 먼저 로컬에서 커밋을 완료한다.
@@ -36,7 +26,7 @@ repository를 만들고 로컬에서 폴더 생성하고 아무 파일이나 만
 원격으로 push하려해도 패스워드가 올바르지 않다고 psuh failed한다.
 ```
 
-### 1-2. 원격 로그인 실패 확인
+### 원격 로그인 실패 확인
 
 ```s
 # 한국어
@@ -66,7 +56,7 @@ user/emails was not found.
 
 ---
 
-## 2. 소스트리 종료하고 자격증명에서 git 관련된 정보 모두 제거
+## 소스트리 종료하고 자격증명에서 git 관련된 정보 모두 제거
 
 참고 Link: [https://skuld2000.tistory.com/147][link]<br />
 
@@ -84,7 +74,7 @@ git으로 들어간 이름들 선택해서 제거한다.
 ---
 
 
-## 3. 명령 프롬프트(cmd) 창 열기
+## 명령 프롬프트(cmd) 창 열기
 
 참고 Link: [https://qastack.kr/programming/17659206/git-push-results-in-authentication-failed][link2]<br />
 
@@ -125,7 +115,7 @@ github repository 페이지로 가면 push가 된걸 확인할 수 있다.
 
 ---
 
-## 4. 소스트리에서 확인
+## 소스트리에서 확인
 
 ```s
 '소스트리' - '도구' - '옵션' - '인증'

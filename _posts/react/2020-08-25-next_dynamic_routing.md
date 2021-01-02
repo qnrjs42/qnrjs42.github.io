@@ -1,9 +1,20 @@
 ---
 title: "[React, Nextjs] Nextjs 동적 라우팅"
-date: 2020-08-25T000:00:00-:00
-categories: [React, Nextjs]
-tags: [React, Nextjs, loadable, useRouter]
+excerpt: "@loadable/component"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - React
+tags:
+  - React
+  - Nextjs
+  - loadable
+  - useRouter
+last_modified_at: 2020-08-25T000:00:00-:00
 ---
 
 이 코드를 사용하게 된 계기는<br />
@@ -18,9 +29,9 @@ localhost:3000/user/manage_url
 
 즉, user 폴더 내에서 여러 컴포넌트들을 불러오는 것이다.
 
-## 모듈 설치하기
+## 0. 모듈 설치하기
 
-```
+```react
 {% raw %}
 // 필요한 모듈
 npm i @loadable/component
@@ -28,7 +39,7 @@ npm i next
 {% endraw %}
 ```
 
-## 컴포넌트 메뉴에서 설정하기
+## 1. 컴포넌트 메뉴에서 설정하기
 
 ```react
 {% raw %}
@@ -62,7 +73,7 @@ as={`/user/manage_url`}
 localhost:3000/user/manager_url
 ```
 
-## 라우터에서 어떤 링크가 왔는지 검증
+## 2. 라우터에서 어떤 링크가 왔는지 검증
 
 _파일 구조_
 컴포넌트: /front/components/SiderMenu.js  

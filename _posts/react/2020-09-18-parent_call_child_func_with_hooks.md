@@ -1,8 +1,14 @@
 ---
 title: "[React] 부모 컴포넌트에서 자식 컴포넌트 함수 호출과 데이터 가져오기 with hooks(useRef)"
-date: 2020-09-19 00:00:00 +0900
-categories: [React]
-tags: [React, props, hooks]
+excerpt: "useRef, forwardRef, useImperativeHandle"
+
+categories:
+  - React
+tags:
+  - React
+  - props
+  - hooks
+last_modified_at: 2020-09-19T000:00:00-:00
 ---
 
 [20-09-19 업데이트]

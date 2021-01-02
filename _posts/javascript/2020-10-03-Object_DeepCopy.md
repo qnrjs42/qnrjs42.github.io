@@ -1,9 +1,19 @@
 ---
 title: "[Javascript] Object - DeepCopy"
-date: 2020-10-03 00:00:00 +0900
-categories: [Javascript]
-tags: [Javascript, Object, DeepCopy]
+excerpt: "for (const [key, value] of Object.entries(obj))"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - Javascript
+tags:
+  - Javascript
+  - Object
+  - DeepCopy
+last_modified_at: 2020-10-03T000:00:00-:00
 ---
 
 ## Object.entries(obj)

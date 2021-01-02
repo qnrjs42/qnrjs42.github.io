@@ -1,15 +1,16 @@
-<!--
-  Calculate the post's reading time, and display the word count in tooltip
- -->
-{% assign words = include.content | strip_html | number_of_words: "auto" %}
+{% assign words_per_minute = page.words_per_minute | default: site.words_per_minute | default: 200 %}
 
-{% assign read_time = words | divided_by: site.data.read_time.wpm %}
+{% if post.read_time %}
+{% assign words = post.content | strip_html | number_of_words %}
+{% elsif page.read_time %}
+{% assign words = page.content | strip_html | number_of_words %}
+{% endif %}
 
-{% unless read_time > 0 %}
-  {% assign read_time = site.data.read_time.min_time %}
-{% endunless %}
-
-<!-- return element -->
-<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="{{ words }} words">
-  {{- read_time -}}{{" "}}{{- site.data.read_time.prompt -}}
-</span>
+{% if words < words_per_minute %}
+{{ site.data.ui-text[site.locale].less_than | default: "less than" }} 1
+{{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
+{% elsif words == words_per_minute %}
+1 {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
+{% else %}
+{{ words | divided_by:words_per_minute }} {{ site.data.ui-text[site.locale].minute_read | default: "minute read" }}
+{% endif %}

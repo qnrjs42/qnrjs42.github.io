@@ -1,9 +1,18 @@
 ---
 title: "[Node] puppeteer 크롤링 팁"
-date: 2020-10-13 00:00:00 +0900
-categories: [Node]
-tags: [Node, puppeteer]
+excerpt: "Array empty, Object empty"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - Node
+tags:
+  - Node
+  - puppeteer
+last_modified_at: 2020-10-13T000:00:00-:00
 ---
 
 ```javascript
@@ -40,7 +49,7 @@ const crawler = async () => {
 crawler();
 ```
 
-## console.log는 브라우저 콘솔에서...
+## 1. console.log는 브라우저 콘솔에서...
 
 현재 위에 코드를 보면 내가 지금 제대로 가지고 왔는지 테스트를 하고 싶은 코드이다.
 
@@ -93,7 +102,7 @@ node - 콘솔 이미지
 
 
 
-## 결론
+## 2. 결론
 
 ```javascript
 const srcs = await page.evaluate(() => {

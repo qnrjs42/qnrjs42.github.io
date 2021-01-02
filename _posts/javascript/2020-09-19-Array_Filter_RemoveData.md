@@ -1,9 +1,22 @@
 ---
 title: "[Javascript] 배열 다수의 데이터 삭제하는 방법"
-date: 2020-09-19 00:00:00 +0900
-categories: [Javascript]
-tags: [Javascript, Array, filter, indexOf, includes, findIndex]
+excerpt: "Array.filter(), Array.indexOf(), Array.includes(), Array.findIndex()"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - Javascript
+tags:
+  - Javascript
+  - Array
+  - filter
+  - indexOf
+  - includes
+  - findIndex
+last_modified_at: 2020-09-19T000:00:00-:00
 ---
 
 ## filter()와 indexOf() 이용

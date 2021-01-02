@@ -1,11 +1,14 @@
 ---
 title: "[SourceTree] 소스트리 실행 후 종료됐을 때 해결방법 (윈도우)"
-date: 2020-12-19 00:00:00 +0900
-categories: [Git]
-tags: [Git, SourceTree]
-toc: true
----
+excerpt: "맥은 잘 되는데 윈도우가 꼭 안 되더라2"
 
+categories:
+  - Git
+tags:
+  - Git
+  - SourceTree
+last_modified_at: 2020-12-19T000:00:00-:00
+---
 
 내 증상: 소스트리를 실행시키고 저장소 선택하는 화면까지 뜨자마자 종료되는 현상.
 

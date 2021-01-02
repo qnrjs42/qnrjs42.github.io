@@ -1,10 +1,15 @@
 ---
-title: "[React, Nextjs] 페이지 이동 후 새로고침"
-date: 2020-08-20T000:00:00-:00
-categories: [React, Nextjs]
-tags: [React, Nextjs, 페이지 이동]
----
+title:  "[React, Nextjs] 페이지 이동 후 새로고침"
+excerpt: "document.location.href = '/'"
 
+categories:
+  - React
+tags:
+  - React
+  - Nextjs
+  - 페이지 이동
+last_modified_at: 2020-08-20T000:00:00-:00
+---
 
 
 Nextjs의 'Link - href', 'Router - push'같은 경우 페이지 이동 후 새로고침을 하지 않는다.

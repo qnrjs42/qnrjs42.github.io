@@ -1,9 +1,19 @@
 ---
 title: "[Javascript] Array - reduce()"
-date: 2020-08-24 00:00:00 +0900
-categories: [Javascript]
-tags: [Javascript, Array, reduce]
+excerpt: "Array.reduce(function(){})"
+
 toc: true
+toc_sticky: true
+toc_lable: "On This Page"
+toc_icon: "cog"
+
+categories:
+  - Javascript
+tags:
+  - Javascript
+  - Array
+  - reduce
+last_modified_at: 2020-08-24T000:00:00-:00
 ---
 
 ## reduce()
@@ -13,7 +23,7 @@ forEach()처럼 시맨틱 접근
 배열 끝까지 콜백 함수 호출<br />
 파라미터 작성 여부에 따라 처리가 다르다.
 
-### 첫 번째 파라미터(콜백 함수)만 작성했을 때
+### 1. 첫 번째 파라미터(콜백 함수)만 작성했을 때
 
 ```javascript
 {% raw %}
@@ -57,7 +67,7 @@ reduce() 첫 번째 파라미터만 작성한 경우
 마지막으로 반환된 값을 result에 할당
 ```
 
-### 두 번째 파라미터까지 작성했을 때
+### 2. 두 번째 파라미터까지 작성했을 때
 
 ```javascript
 {% raw %}
