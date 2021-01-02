@@ -1,21 +1,9 @@
 ---
-title:  "[PostgreSQL] local data to remote data"
-excerpt: "로컬 DB 데이터를 원격 DB 테이블에 복사 붙여넣기"
-
+title: "[PostgreSQL] local data to remote data"
+date: 2020-12-17 00:00:00 +0900
+categories: [SQL]
+tags: [SQL, PostgreSQL, local data to remote data, pg_dump, pg_restore]
 toc: true
-toc_sticky: true
-toc_lable: "On This Page"
-toc_icon: "cog"
-
-categories:
-  - SQL
-tags:
-  - SQL
-  - PostgreSQL
-  - local data to remote data
-  - pg_dump
-  - pg_restore
-last_modified_at: 2020-12-17T000:00:00-:00
 ---
 
 해당 명령어는 로컬에 있는 데이터들을 원격 DB 테이블에 복사하기 위해 사용된다.
@@ -29,7 +17,7 @@ last_modified_at: 2020-12-17T000:00:00-:00
 
 <br/>
 
-## 1. pg_dump
+## pg_dump
 
 ```
 // 먼저 로컬 DB 테이블의 데이터들을 덤프 파일로 생성한다.
@@ -79,7 +67,7 @@ my_dump.tar
 
 ---
 
-## 2. pg_restore
+## pg_restore
 
 ```
 // 덤프 파일이 있는 폴더에서 실행한다.
@@ -127,7 +115,7 @@ SELECT * FROM realdb.public.real_table;
 
 ---
 
-## 3. 주의해야할 점 (환경)
+## 주의해야할 점 (환경)
 
 <br/>
 

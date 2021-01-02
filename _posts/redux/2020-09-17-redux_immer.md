@@ -1,12 +1,8 @@
 ---
-title: "Redux 불변성 편하게 지키기"
-excerpt: "immer"
-
-categories:
-  - Redux
-tags:
-  - Redux
-last_modified_at: 2020-09-17T012:00:00-:00
+title: "[Redux] 불변성 편하게 지키기(immer)"
+date: 2020-09-17 00:00:00 +0900
+categories: [Redux]
+tags: [Redux]
 ---
 
 ```javascript

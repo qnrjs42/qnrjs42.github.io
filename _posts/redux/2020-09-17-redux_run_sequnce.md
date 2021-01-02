@@ -1,23 +1,17 @@
 ---
-title: "Redux, Redux-Saga 동작 순서"
-excerpt: ""
-
-categories:
-  - Redux
-tags:
-  - Nextjs
-  - Redux
-  - Redux-Saga
-last_modified_at: 2020-09-17T012:00:00-:00
+title: "[Redux]  Redux-Saga 동작 순서"
+date: 2020-09-17 00:00:00 +0900
+categories: [Redux]
+tags: [Redux, Nextjs, redux-saga]
 ---
 
-## 1. components/LoginForm.js
+## components/LoginForm.js
 
 ```javascript
 dispatch(loginRequestAction(data));
 ```
 
-## 2. reducers/users.js
+## reducers/users.js
 
 ```javascript
 export const loginRequestAction = (data) => {
@@ -28,7 +22,7 @@ export const loginRequestAction = (data) => {
 };
 ```
 
-## 3. reducer/users.js
+## reducer/users.js
 
 ```javascript
 case "LOG_IN_REQUEST":
@@ -38,7 +32,7 @@ return {
 };
 ```
 
-## 4. sagas/user.js
+## sagas/user.js
 
 ```javascript
 function* watchLogIn() {
@@ -49,7 +43,7 @@ export default function* userSaga() {
 }
 ```
 
-## 5. sagas/user.js
+## sagas/user.js
 
 ```javascript
 function* logIn(action) {
@@ -60,7 +54,7 @@ function* logIn(action) {
 }
 ```
 
-## 6. reducers/user.js
+## reducers/user.js
 
 ```javascript
 case "LOG_IN_SUCCESS":

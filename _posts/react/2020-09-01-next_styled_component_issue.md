@@ -1,14 +1,9 @@
 ---
 title: "[React, Nextjs] Nextjs와 styled-component 초기 렌더링 문제"
-excerpt: "[20-09-02 수정] styled-compoent 적용 전에 렌더링이 끝나버리는 문제점"
-
-categories:
-  - React
-tags:
-  - React
-  - Nextjs
-  - styled-component
-last_modified_at: 2020-09-01T000:00:00-:00
+date: 2020-09-01 00:00:00 +0900
+categories: [React, Nextjs]
+tags: [React, Nextjs, styled-componets]
+toc: true
 ---
 
 Nextjs에서와 styled-component 같이 사용 하던 중 <br />

@@ -1,13 +1,8 @@
 ---
 title: "[Design] antd table row two line(multi line)"
-excerpt: "rowspan 사용 안 함"
-
-categories:
-  - Design
-tags:
-  - Design
-  - Antd
-last_modified_at: 2020-09-17T012:00:00-:00
+date: 2020-09-17 00:00:00 +0900
+categories: [Design]
+tags: [Design, Antd]
 ---
 
 antd table에서 rowspan을 사용하려는데 테이블의 데이터가 <br />

@@ -1,14 +1,9 @@
 ---
-title:  "[PostgreSQL] table data copy"
-excerpt: "같은 데이터베이스 내에 테이블 데이터 복사"
-
-categories:
-  - SQL
-tags:
-  - SQL
-  - PostgreSQL
-  - table copy
-last_modified_at: 2020-12-17T000:00:00-:00
+title: "[PostgreSQL] table data copy"
+date: 2020-12-17 00:00:00 +0900
+categories: [SQL]
+tags: [SQL, PostgreSQL, table copy]
+toc: true
 ---
 
 ```sql

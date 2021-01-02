@@ -1,15 +1,8 @@
 ---
-title:  "[Design] antd col order"
-excerpt: "order"
-
-categories:
-  - Design
-tags:
-  - Design
-  - CSS
-  - Antd
-  - Order
-last_modified_at: 2020-08-19T000:00:00-:00
+title: "[Design] antd col order"
+date: 2020-08-19 00:00:00 +0900
+categories: [Design]
+tags: [Design, CSS, Antd, Order]
 ---
 
 

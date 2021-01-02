@@ -1,13 +1,8 @@
 ---
 title: "[Design] antd table row click"
-excerpt: "onRow={onRow}"
-
-categories:
-  - Design
-tags:
-  - Design
-  - Antd
-last_modified_at: 2020-09-18T012:00:00-:00
+date: 2020-09-18 00:00:00 +0900
+categories: [Design]
+tags: [Design, Antd]
 ---
 
 row 위에 마우스를 갖다 대면 mouse hover 효과는 나타나지 않는다.<br />

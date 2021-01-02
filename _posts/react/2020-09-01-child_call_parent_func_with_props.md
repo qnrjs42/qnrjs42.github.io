@@ -1,13 +1,8 @@
 ---
 title: "[React] 자식 컴포넌트에서 부모 컴포넌트 함수 호출 with props"
-excerpt: "자식 컴포넌트 - 부모 컴포넌트 데이터 전달"
-
-categories:
-  - React
-tags:
-  - React
-  - props
-last_modified_at: 2020-09-01T000:00:00-:00
+date: 2020-09-01 00:00:00 +0900
+categories: [React]
+tags: [React, props]
 ---
 
 자식 컴포넌트에서 부모 컴포넌트의 함수 호출 방법

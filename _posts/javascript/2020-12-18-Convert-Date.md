@@ -1,15 +1,11 @@
 ---
 title: "[Javascript, Typescript] Convert Date"
-excerpt: "3분 전, 2시간 전, 3일 전을 현재 시간과 비교하여 Date 포맷으로 컨버트"
-
-categories:
-  - Javascript
-tags:
-  - Javascript
-  - Typescript
-  - Convert Date
-last_modified_at: 2020-12-18T000:00:00-:00
+date: 2020-12-18 00:00:00 +0900
+categories: [Javascript, Typescript]
+tags: [Javascript, Typescript, Convert Date]
+toc: true
 ---
+
 
 3분 전, 2시간 전, 3일 전을 현재 시간과 비교하여 날짜 구하는 방법
 
@@ -20,7 +16,7 @@ last_modified_at: 2020-12-18T000:00:00-:00
 파라미터 값 포맷: string<br/>
 리턴 값 포맷: Date
 
-### 구현된 로직
+## 구현된 로직
 - 0분 전
 - 0시간 전
 - 0일 전
@@ -28,7 +24,7 @@ last_modified_at: 2020-12-18T000:00:00-:00
 
 ---
 
-## Typescript
+### Typescript
 
 ```ts
 // 3분 전, 10분 전, 2시간 전, 2일 전
@@ -80,7 +76,7 @@ const convertDateFunc = (value: string) => {
 
 ---
 
-## Javascript
+### Javascript
 
 ```js
 const convertDateFunc = (value) => {

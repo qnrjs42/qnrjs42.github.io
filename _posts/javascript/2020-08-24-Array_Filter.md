@@ -1,19 +1,9 @@
 ---
 title: "[Javascript] Array - filter()"
-excerpt: "Array.filter(function(){})"
-
+date: 2020-08-24 00:00:00 +0900
+categories: [Javascript]
+tags: [Javascript, Array, filter]
 toc: true
-toc_sticky: true
-toc_lable: "On This Page"
-toc_icon: "cog"
-
-categories:
-  - Javascript
-tags:
-  - Javascript
-  - Array
-  - filter
-last_modified_at: 2020-08-24T000:00:00-:00
 ---
 
 ## filter()
@@ -30,7 +20,7 @@ forEach()처럼 사용
 
 조건에 맞는 엘리먼트를 추려낼 때 유용하다.
 
-### 1. true일 때 엘리먼트 반환
+### true일 때 엘리먼트 반환
 
 ```javascript
 {% raw %}

@@ -1,14 +1,8 @@
 ---
-title: "Nextjs와 Redux-saga"
-excerpt: "Nextjs와 Redux-saga"
-
-categories:
-  - Redux
-tags:
-  - Nextjs
-  - Redux
-  - Redux-Saga
-last_modified_at: 2020-09-17T012:00:00-:00
+title: "[Redux] Nextjs와 Redux-saga"
+date: 2020-09-17 00:00:00 +0900
+categories: [Redux]
+tags: [Redux, Redux, redux-saga]
 ---
 
 ## 필요한 모듈

@@ -1,18 +1,11 @@
 ---
-title: "Nextjs와 Redux"
-excerpt: "Nextjs와 Redux"
-
-categories:
-  - Redux
-tags:
-  - Nextjs
-  - Redux
-last_modified_at: 2020-09-17T012:00:00-:00
+title: "[Redux] Nextjs와 Redux"
+date: 2020-09-17 00:00:00 +0900
+categories: [Redux]
+tags: [Redux, Nextjs]
 ---
 
-### next와 redux
-
-## 1. 필요한 모듈
+## 필요한 모듈
 
 ```react
 next-redux-wrapper
@@ -21,7 +14,7 @@ react-redux
 redux-devtools-extension
 ```
 
-## 2. React - Redux에서는
+## React - Redux에서는
 
 ```react
 // React에서의 코드
@@ -29,7 +22,7 @@ redux-devtools-extension
 // Next에서는 해당 코드 작성하지 않아도 됨
 ```
 
-## 3. Redux에 대해
+## Redux에 대해
 
 redux 코드 중에
 ...state는 바뀌지 않는 데이터는 참조관계로 남고,
