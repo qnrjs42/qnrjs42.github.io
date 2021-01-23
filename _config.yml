@@ -41,7 +41,7 @@ comments:
     num_posts: # 5 (default)
     colorscheme: # "light" (default), "dark"
   utterances:
-    theme: github-dark # "github-light" (default), "github-dark"
+    theme: "github-dark" # "github-light" (default), "github-dark"
     issue_term: # "pathname" (default)
   staticman:
     branch: # "master"
@@ -264,7 +264,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       read_time: true
       comments: true
       share: true
