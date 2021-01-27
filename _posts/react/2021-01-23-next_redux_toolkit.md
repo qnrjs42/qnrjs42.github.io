@@ -314,7 +314,7 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }: IProps) => {
-  const isLoggedIn = useSelector<RootState, IUser>((state) => state.users.isLoggedIn);
+  const isLoggedIn = useSelector<RootState, boolean>((state) => state.users.isLoggedIn);
 
   console.log('>>>', isLoggedIn);
 
