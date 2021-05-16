@@ -1,1 +1,5 @@
-bundle exec jekyll serve --future
+## 실행 방법
+
+```shell
+npm run dev
+```
