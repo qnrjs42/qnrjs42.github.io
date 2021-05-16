@@ -16,8 +16,12 @@ tags:
   - Redux
   - Redux-Toolkit
   - Typescript
-last_modified_at: 2021-01-23T000:00:00-:00
+last_modified_at: 2021-03-31T000:00:00-:00
 ---
+
+> 21.03.31 수 업데이트
+>
+> > useSelector 타입추론 추가 (공식문서 참고)
 
 redux는 꽤나 typescript를 적용하는데 애를 먹었다.
 
@@ -29,7 +33,7 @@ redux-toolkit에 대한 설명은 아래 링크에서
 
 참고 Link: [https://github.com/qnrjs42/redux_toolkit_mobx][link]
 
-[link]: https://github.com/qnrjs42/redux_toolkit_mobx	"Go"
+[link]: https://github.com/qnrjs42/redux_toolkit_mobx "Go"
 
 **버전에 따라 달라질 수 있으니 유의해야한다!!!!!**
 
@@ -77,18 +81,20 @@ npm i -D @types/react-redux typescript
 }
 ```
 
-
-
 ---
 
 ## store.ts
 
 ```ts
-import { configureStore, getDefaultMiddleware, EnhancedStore } from "@reduxjs/toolkit";
-import { createWrapper, MakeStore } from 'next-redux-wrapper';
-import slice from '../slices';
+import {
+  configureStore,
+  getDefaultMiddleware,
+  EnhancedStore,
+} from "@reduxjs/toolkit";
+import { createWrapper, MakeStore } from "next-redux-wrapper";
+import slice from "../slices";
 
-const devMode = process.env.NODE_ENV === 'development';
+const devMode = process.env.NODE_ENV === "development";
 
 const store = configureStore({
   reducer: slice,
@@ -104,6 +110,8 @@ export const wrapper = createWrapper(makeStore, {
   debug: devMode,
 });
 
+// 21.03.31 추가
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export default wrapper;
 ```
@@ -136,9 +144,9 @@ export interface IPost {}
 
 ```ts
 import { combineReducers, AnyAction } from "@reduxjs/toolkit";
-import { HYDRATE } from 'next-redux-wrapper';
-import users from './users';
-import posts from './posts';
+import { HYDRATE } from "next-redux-wrapper";
+import users from "./users";
+import posts from "./posts";
 import { IUser } from "../interface/user";
 import { IPost } from "../interface/post";
 
@@ -150,7 +158,7 @@ export interface State {
 const rootReducer = (state: State | undefined, action: AnyAction) => {
   switch (action.type) {
     case HYDRATE:
-      console.log('HYDRATE');
+      console.log("HYDRATE");
       return action.payload;
 
     default: {
@@ -162,7 +170,8 @@ const rootReducer = (state: State | undefined, action: AnyAction) => {
     }
   }
 };
-export type RootState = ReturnType<typeof rootReducer>;
+// 21.03.31 제거
+// export type RootState = ReturnType<typeof rootReducer>;
 export default rootReducer;
 ```
 
@@ -171,32 +180,32 @@ export default rootReducer;
 ```ts
 import { createSlice } from "@reduxjs/toolkit";
 
-import { logInAction, logOutAction } from '../actions/users'; 
+import { logInAction, logOutAction } from "../actions/users";
 import { IUser } from "../interface/user";
 
 const initialState: IUser = {
   isLoggedIn: false,
   user: null,
-}
+};
 
 export const users = createSlice({
-  name: 'users',
+  name: "users",
   initialState,
   reducers: {},
-  extraReducers: (builder) => builder
-    // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
-    .addCase(logInAction.pending, (state, action) => {
-    })
-    .addCase(logInAction.fulfilled, (state, action) => {
-      state.user = action.payload;
-      state.isLoggedIn = true;
-    })
-    .addCase(logInAction.rejected, (state, action) => {})
-    
-    .addCase(logOutAction.pending, (state, action) => {})
-    .addCase(logOutAction.fulfilled, (state, action) => {})
-    .addCase(logOutAction.rejected, (state, action) => {})
-    .addDefaultCase(() => {}),
+  extraReducers: (builder) =>
+    builder
+      // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
+      .addCase(logInAction.pending, (state, action) => {})
+      .addCase(logInAction.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+      })
+      .addCase(logInAction.rejected, (state, action) => {})
+
+      .addCase(logOutAction.pending, (state, action) => {})
+      .addCase(logOutAction.fulfilled, (state, action) => {})
+      .addCase(logOutAction.rejected, (state, action) => {})
+      .addDefaultCase(() => {}),
 });
 
 export default users.reducer;
@@ -209,22 +218,23 @@ export default users.reducer;
 
 import { createSlice } from "@reduxjs/toolkit";
 
-import { logInAction } from '../actions/users'; 
-import { IPost } from '../interface/post';
+import { logInAction } from "../actions/users";
+import { IPost } from "../interface/post";
 
-const initialState: IPost = {}
+const initialState: IPost = {};
 
 export const posts = createSlice({
-  name: 'posts',
+  name: "posts",
   initialState,
   reducers: {},
-  extraReducers: (builder) => builder
-    // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
-    .addCase(logInAction.pending, (state, action) => {})
-    .addCase(logInAction.fulfilled, (state, action) => {})
-    .addCase(logInAction.rejected, (state, action) => {})
-    
-    .addDefaultCase(() => {}),
+  extraReducers: (builder) =>
+    builder
+      // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
+      .addCase(logInAction.pending, (state, action) => {})
+      .addCase(logInAction.fulfilled, (state, action) => {})
+      .addCase(logInAction.rejected, (state, action) => {})
+
+      .addDefaultCase(() => {}),
 });
 
 export default posts.reducer;
@@ -232,26 +242,42 @@ export default posts.reducer;
 
 ---
 
+## hooks/useSelector.ts
+
+- 21.03.31 추가
+
+```ts
+import { TypedUseSelectorHook, useSelector } from "react-redux";
+import { RootState } from "store";
+
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+```
+
+---
+
 ## actions/users.ts
 
 ```ts
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { IUser } from '../interface/user';
+import { IUser } from "../interface/user";
 
 interface rejectMessage {
   errorMessage: string;
 }
 
 // 아무것도 없음
-export const logOutAction = createAsyncThunk('user/logOut', async(data, thnukAPI) => {
+export const logOutAction = createAsyncThunk(
+  "user/logOut",
+  async (data, thnukAPI) => {}
+);
 
-  
-});
-
-export const logInAction = createAsyncThunk<IUser, any, { rejectValue: rejectMessage }>
-('user/logIn', async (data) => {
-  console.log(data, 'logIn action');
+export const logInAction = createAsyncThunk<
+  IUser,
+  any,
+  { rejectValue: rejectMessage }
+>("user/logIn", async (data) => {
+  console.log(data, "logIn action");
 
   return data;
 });
@@ -259,7 +285,7 @@ export const logInAction = createAsyncThunk<IUser, any, { rejectValue: rejectMes
 
 ---
 
-## pages/_app.tsx
+## pages/\_app.tsx
 
 ```tsx
 {% raw %}
@@ -290,20 +316,20 @@ export default wrapper.withRedux(App);
 
 ## components/AppLayout.tsx
 
-- useSelector는 어떻게 사용하는지도 보는게 좋다. `useSelector<RootState, IUser>`
+- 21.03.31 변경
 
 ```tsx
 {% raw %}
 import React from 'react';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Menu, Input, Row, Col } from 'antd';
 import { useSelector } from 'react-redux';
+import { Menu, Input, Row, Col } from 'antd';
 
 import LoginForm from './LoginForm';
 import UserProfile from './UserProfile';
 import { IUser } from '../interface/user';
-import { RootState } from '../slices';
+import { useAppSelector } from '../hooks/useSelector';
 
 interface IProps {
   children: React.ReactNode;
@@ -314,7 +340,10 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }: IProps) => {
-  const isLoggedIn = useSelector<RootState, boolean>((state) => state.users.isLoggedIn);
+  // 21.03.31 추가
+  const isLoggedIn = useSelector(state => state.users.isLoggedIn);
+  // 21.03.31 제거
+  // const isLoggedIn = useSelector<RootState, boolean>((state) => state.users.isLoggedIn);
 
   console.log('>>>', isLoggedIn);
 
@@ -416,7 +445,7 @@ export default LoginForm;
 
 ## 이미지로 상태 변화 보기
 
-###  처음 실행했을 때
+### 처음 실행했을 때
 
 - 크롬-개발자 도구-콘솔에서 처음 실행했을 때 해당 로그가 출력되어야 `next-redux-wrapper`가 제대로 실행된걸 알 수 있다.
 
@@ -438,19 +467,19 @@ export default LoginForm;
 
 <img src="/assets/images/nextjs-redux-toolkit/4.png" width="100%" />
 
-### redux 상태 변화  / State / pending 
+### redux 상태 변화 / State / pending
 
 <img src="/assets/images/nextjs-redux-toolkit/5.png" width="100%" />
 
-### redux 상태 변화  / Diff / pending
+### redux 상태 변화 / Diff / pending
 
 <img src="/assets/images/nextjs-redux-toolkit/6.png" width="100%" />
 
-### redux 상태 변화  / Diff / fulfilled
+### redux 상태 변화 / Diff / fulfilled
 
 <img src="/assets/images/nextjs-redux-toolkit/7.png" width="100%" />
 
-### redux 상태 변화  / State/ fulfilled
+### redux 상태 변화 / State/ fulfilled
 
 <img src="/assets/images/nextjs-redux-toolkit/8.png" width="100%" />
 
@@ -460,16 +489,16 @@ export default LoginForm;
 
 - [https://redux-toolkit.js.org/usage/usage-with-typescript][link2]
 
-[link2]: https://redux-toolkit.js.org/usage/usage-with-typescript	"Go"
+[link2]: https://redux-toolkit.js.org/usage/usage-with-typescript "Go"
 
 - [https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops][link3]
 
-[link3]: https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops	"Go"
+[link3]: https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops "Go"
 
 - [https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/][link4]
 
-[link4]: https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/	"Go"
+[link4]: https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/ "Go"
 
 - [https://github.com/qnrjs42/UrlCut_Project/tree/master/front][link5]
 
-[link5]: https://github.com/qnrjs42/UrlCut_Project/tree/master/front	"Go"
+[link5]: https://github.com/qnrjs42/UrlCut_Project/tree/master/front "Go"
