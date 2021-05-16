@@ -1,5 +1,5 @@
 ## 실행 방법
 
 ```shell
-npm run dev
+npm start
 ```
