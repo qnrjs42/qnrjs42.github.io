@@ -47,6 +47,9 @@ const Template: FC<TemplateProps> = ({
         <meta name='twitter:site' content='qnrjs42' />
         <meta name='twitter:creator' content='qnrjs42' />
 
+        <meta name='google-site-verification' content={title} />
+        <meta name='naver-site-verification' content={title} />
+
         <html lang='ko' />
       </Helmet>
 
