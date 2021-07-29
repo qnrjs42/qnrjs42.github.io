@@ -1,0 +1,53 @@
+---
+date: '2021-03-18'
+title: '[Jekyll] mac jekyll Failed to build gem native extension. 해결방법 (with zshrc)'
+categories: ['Jekyll']
+summary: "Make sure that `gem install http_parser.rb -v '0.6.0' --source 'https://rubygems.org/'` succeeds before bundling."
+---
+
+# Error
+
+루비 설정이 잘못 되어서 그렇습니다.
+
+```shell
+# failed
+bundle exec jekyll serve --future
+
+-> bundle install
+```
+
+```shell
+# failed
+bundle install
+
+ERROR Make sure that `gem install http_parser.rb -v '0.6.0' --source 'https://rubygems.org/'` succeeds before bundling.
+```
+
+```shell
+# failed
+gem install http_parser.rb -v '0.6.0' --source 'https://rubygems.org/'
+
+ERROR Failed to build gem native extension.
+```
+
+## Solution
+
+```shell
+brew install ruby
+```
+
+```shell
+echo 'eval "$(rbenv init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+```
+
+```shell
+# cd my_project
+bundle install
+
+bundle exec jekyll serve --future
+```
+
+Link: <a href='https://pjs21s.github.io/rbenv-shims-in-path-not-found' target='_blank' rel='noreferrer noopener'>pjs21s.github.io/rbenv-shims-in-path-not-found</a>

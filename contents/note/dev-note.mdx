@@ -1,0 +1,673 @@
+---
+date: '2021-03-09'
+title: '[Note] 배움의 노트'
+categories: ['Note']
+summary: '배웠던 내용을 적어보자.'
+---
+
+## [21-03-09 업데이트 내용]
+
+Link: [Google 페이지 경험 업데이트. Google 순위 요소가 되는 사용자 경험][go1]
+
+[go1]: https://searchengineland.com/the-google-page-experience-update-user-experience-to-become-a-google-ranking-factor-335252 'Go'
+
+- LCP [Largest Contentful Paint]: 로딩 성능을 측정합니다.
+- 좋은 사용자 경험을 제공하기 위해 사이트는 페이지가 로드 되기 시작한 후 처음 2.5초 이내에 LCP가 발생 하도록 노력해야 한다.
+
+```
+0 ~ 2.5 second : GOOD
+2.5 ~ 4.0 second : NEEDS IMPROVEMENT
+2.5 ~ 4.0 second : POOR
+```
+
+<br />
+
+- FID [First Input Delay]: 첫 번째 입력 지연. 상호 작용을 측정합니다.
+- 좋은 사용자 경험을 제공하기 위해 사이트는 100 millisecond 미만의 FID를 갖도록 노력해야 한다.
+
+```
+0 ~ 0.1 millisecond : GOOD
+0.1 ~ 0.3 millisecond : NEEDS IMPROVEMENT
+0.3 > millisecond : POOR
+```
+
+<br />
+
+- CLS [Cumlative Layout Shift]: 시각적 안정성을 측정합니다.
+- 좋은 사용자 환경을 제공하려면 사이트에서 CLS 점수가 0.1 미만이 되도록 노력해야 한다.
+
+```
+0 ~ 0.1 : GOOD
+0.1 ~ 0.25 : NEEDS IMPROVEMENT
+0.25 > : POOR
+```
+
+---
+
+## [20-09-17 업데이트 내용]
+
+### next.config.js파일
+
+next.config.js는 npm run dev나 npm run build할 때 실행된다.
+
+```json
+// /front/package.json
+"build": "ANALYZE=true NODE_ENV=production next build",
+```
+
+근데 리눅스나 맥에서는 되지만 윈도우에서 되지 않는다
+
+되게 하려면 'cross-env' 모듈 설치
+
+---
+
+### swr
+
+swr은 next에서 만든 라이브러리
+load할 때는 편함
+
+단점은 SSR이 힘듦
+SSR은 필요없고 불러와야하는 데이터에서 사용
+
+---
+
+### URL 주소 한글 사용방법, axios 요청 시 ERR_UNESCAPED_CHARACTERS 에러 해결방법
+
+TypeError [ERR_UNESCAPED_CHARACTERS]: Request path contains unescaped characters
+
+// 크롬-콘솔<br />
+encodeURIComponent('리액트')<br />
+-> "%EB%A6%AC%EC%95%A1%ED%8A%B8"
+
+decodeURIComponent('%EB%A6%AC%EC%95%A1%ED%8A%B8')<br />
+-> '리액트'
+
+```javascript
+// /front/sagas/post.js
+
+function loadHashtagPostsAPI(data, lastId) {
+  return axios.get(`/hashtag/${encodeURIComponent(data)}?lastId=${lastId || 0}`);
+}
+```
+
+```javascript
+// /back/routes/hashtag.js
+
+include: [
+  {
+    model: Hashtag,
+    where: {
+      name: decodeURIComponent(req.params.hashtag),
+    },
+  },
+  ...
+]
+```
+
+---
+
+### 동적(다이나믹) 라우팅
+
+// /front/pages/post/[id].js
+
+---
+
+### SSR 쿠키 공유 [getServerSideProps]
+
+```javascript
+// /front/pages/index.js
+
+// getServerSideProps가 Home보다 먼저 실행된다
+export const getServerSideProps = wrapper.getServerSideProps((context) => {
+  context.store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  context.store.dispatch({
+    type: LOAD_POSTS_REQUEST,
+  });
+
+  // REQUEST가 SUCCESS가 될 때까지 기다려줌
+  context.store.dispatch(END);
+  await context.store.sagaTask.toPromise(); // 해당 코드는 store/configureStore - store.sagaTask = sagaMiddleware.run(rootSaga);
+});
+```
+
+---
+
+### SSR 쿠키 공유(2) [getStaticProps]
+
+getServerSideProps: 접속할 때마다 접속한 상황에 따라서 화면이 바껴야할 때 사용 (웬만할 때 사용)
+getStaticProps: 언제 접속해도 데이터가 바뀔 일이 없을 때 사용, 게시글 하나 올려두고 계속 두는 것 (사용하기 까다로움, 잘 안 씀)
+
+```javascript
+// /front/pages/about.js
+export const getStaticProps = wrapper.getStaticProps(async (context) => {
+  console.log('getStaticProps');
+  context.store.dispatch({
+    type: LOAD_USER_REQUEST,
+    data: 1,
+  });
+  context.store.dispatch(END);
+  await context.store.sagaTask.toPromise();
+});
+```
+
+---
+
+### Component 렌더링 전에 데이터 로드
+
+화면에 그려지기 전에 먼저 데이터를 불러온다면 데이터가 채워진 채로 화면이 그려진다.
+
+Component보다 먼저 렌더링 실행하는 함수: getInitialProps
+하지만 곧 없어질 예정
+
+그 대신 Next 9버전 부터 새로운 함수가 나옴
+
+```javascript
+// /front/pages/index.js
+
+import { END } from "redux-saga";
+import wrapper from "../store/configureStore";
+
+const Home = () => {
+  ...
+
+  // getServerSideProps를 사용하게 되면 이 부분에서 useEffect는 안 쓰고 getServerSideProps안에서 사용
+  //   useEffect(() => {
+  //   dispatch({
+  //     type: LOAD_MY_INFO_REQUEST,
+  //   });
+  //   dispatch({
+  //     type: LOAD_POSTS_REQUEST,
+  //   });
+  // }, []);
+
+  return () {
+    ...
+  }
+};
+
+// getServerSideProps가 Home보다 먼저 실행된다
+export const getServerSideProps = wrapper.getServerSideProps((context) => {
+  context.store.dispatch({
+    type: LOAD_MY_INFO_REQUEST,
+  });
+  context.store.dispatch({
+    type: LOAD_POSTS_REQUEST,
+  });
+
+  // REQUEST가 SUCCESS가 될 때까지 기다려줌
+  context.store.dispatch(END);
+  await context.store.sagaTask.toPromise(); // 해당 코드는 store/configureStore - store.sagaTask = sagaMiddleware.run(rootSaga);
+});
+
+export default Home;
+```
+
+getServerSideProps는 순전히 프론트 서버에서만 실행이 되고,
+Home은 브라우저와 프론트 서버에서 실행이 된다.
+
+context.store 정보가 들어있는 것들을 reducers/index.js - HYDRATE 액션이 실행되면서 정보들을 받는다
+
+```javascript
+// /front/reducers/index.js
+
+// 아래 코드는 index - index, user, post로 구성 되어있어서 덮어쓰기에 문제가 발생
+// const rootReducer = combineReducers({
+//   index: (state = {}, action) => {
+//     switch (action.type) {
+//       case HYDRATE:
+//         console.log("HYDRATE", action);
+//         return {
+//           ...state,
+//           ...action.payload,
+//         };
+
+//       default:
+//         return state;
+//     }
+//   },
+//   user,
+//   post,
+// });
+
+// 아래 코드를 해야 rootReducer 상태 전체를 덮어씌울 수 있음
+const rootReducer = (state, action) => {
+  switch (action.type) {
+    case HYDRATE:
+      console.log('HYDRATE', action);
+      return action.payload;
+    default: {
+      const combineReducer = combineReducers({
+        user,
+        post,
+      });
+      return combineReducer(state, action);
+    }
+  }
+};
+```
+
+---
+
+### NEXTjs SSR 적용
+
+```javascript
+// /front/pages/_app.js
+
+next-redux-saga 모듈 필요 없어짐
+```
+
+있어도 상관 없지만 dependencies 모듈이라 배포할 때 껴서 되기때문에 필요없으니깐 지워주도록 한다.
+
+---
+
+### 반복문안에서 데이터를 넘기고 싶을 때 (고차함수)
+
+반복문안에서 onClick() 을 통해 반복문에 대한 데이터 넘겨줘야할 때
+
+```react
+{% raw %}
+// /front/component/FollowList.js
+
+const onCancel = (id) => () => {
+    if (header === "팔로잉") {
+      dispatch({
+        type: UNFOLLOW_REQUEST,
+        data: id,
+      });
+    }
+    dispatch({
+      type: REMOVE_FOLLOWER_REQUEST,
+      data: id,
+    });
+  };
+
+renderItem={(item) => (
+  <List.Item style={{ marginTop: 20 }}>
+    <Card
+      actions={[
+        <StopOutlined key="stop" onClick={onCancel(item.id)} />,
+      ]}
+    >
+      <Card.Meta description={item.nickname} />
+    </Card>
+  </List.Item>
+)}
+{% endraw %}
+```
+
+---
+
+### Form return
+
+hooks보다 아래에 return을 써줘야 한다
+
+hooks: useCallback, useMemo
+
+---
+
+### 더미데이터
+
+shortid : 겹치기 힘든 ID 생성
+faker : 가짜 데이터들 생성
+
+```javascript
+import shortId from 'shortid';
+import faker from 'faker';
+
+id: shortId.generate();
+
+initialState.mainPosts = initialState.mainPosts.concat(
+  Array(20)
+    .fill()
+    .map(() => ({
+      id: shortId.generate(),
+      User: {
+        id: shortId.generate(),
+        nickname: faker.name.findName(),
+      },
+      content: faker.lorem.paragraph(),
+      Images: [
+        {
+          src: faker.image.image(),
+        },
+      ],
+      Comments: [
+        {
+          User: {
+            id: shortId.generate(),
+            nickname: faker.name.findName(),
+          },
+          content: faker.lorem.sentence(),
+        },
+      ],
+    })),
+);
+```
+
+---
+
+### 게시글 안에서 해시태그 추출하는 방법
+
+www.regexr.com
+
+```react
+{
+  postData.split(/(#[^\s#]+)/g).map((v, index) => {
+    if (v.match(/(#[^\s#]+)/g)) {
+      return (
+        <Link href={`/hashtag/${v.slice(1)}`} key={index}>
+          <a>{v}</a>
+        </Link>
+      );
+    }
+    return v;
+  });
+}
+```
+
+**//g**
+-> g가 붙으면 여러개
+
+**/#/g**
+-> 모든 # 선택
+
+**/#/**
+-> 첫 번째 #만 선택
+
+**/#./g**
+-> 모든 #뒤에 첫문자 선택
+
+**/#.../g**
+-> # 뒤에 세문자 선택
+
+**/#.+/g**
+-> #뒤에 모든 문자 선택
+
+**/#[해익제]+/g**
+-> #뒤에 첫문자가 해, 익, 제인 문자 선택
+
+**/#[^해익제]+/g**
+-> #뒤에 첫문자가 해, 익, 제인 문자 제외한 모든 문자 선택
+
+**/#[^\s]+/g**
+-> 공백이 들어간 문자 제거
+
+**/#[^\s#]+/g**
+-> 공백과 #이 들어간 문자 제거<br />
+즉, 문자가 '#첫번째 #두번째', '#가나다#라마바'인 경우 #첫번째 #두번째 #가나다 #라마바
+이렇게 잘라낼 수 있다
+
+**.split(/(#[^\s#]+)/g)**
+split인 경우 중간에 괄호를 포함시켜줘야 한다
+
+---
+
+### styled-components 태그안에 태그 접근할 때
+
+```javascript
+import styled from 'styled-components';
+
+const ImgWrapper = styled.div`
+  padding: 32px;
+  text-align: center;
+
+  & img {
+    margin: 0 auto;
+    max-height: 750px;
+  }
+`;
+
+{
+  images.map((v) => (
+    <ImgWrapper key={v.src}>
+      <img src={v.src} alt={v.src} />
+    </ImgWrapper>
+  ));
+}
+```
+
+## [20-09-12 업데이트 내용]
+
+### True -> False, False -> True, prev
+
+True -> False
+False -> True 만드는 코드는 아래처럼 작성하자
+
+```javascript
+const [liked, setLiked] = useState(false);
+
+const onToggleLike = useCallback(() => {
+  setLiked((prev) => !prev);
+}, []);
+```
+
+prev는 liked의 이전 데이터가 담겨져 있다
+
+---
+
+### 옵셔널 체이닝 (optional chaining)
+
+```javascript
+const id = me?.id;
+
+const id = useSelector((state) => state.user.me?.id);
+```
+
+풀어서 쓰면
+
+```javascript
+const id = me && me.id;
+
+const id = useSelector((state) => state.user.me && state.user.me.id);
+```
+
+---
+
+### PropTypes
+
+PropTypes 객체 상세하게 정의해줄 때 PropTypes.shape() 사용
+
+```javascript
+PostCard.propTypes = {
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    User: PropTypes.object,
+    content: PropTypes.string,
+    createAt: PropTypes.object,
+    Comments: PropTypes.arrayOf(PropTypes.object),
+    Images: PropTypes.arrayOf(PropTypes.object),
+  }).isRequired,
+};
+```
+
+---
+
+### useRef
+
+```javascript
+import { useRef } from 'react';
+useRef(); // 실제 DOM에 접근하기 위해 사용
+```
+
+---
+
+### 반복문 배열 안에 컴포넌트 key
+
+```javascript
+{mainPosts.map((post, index) => <PostCard key={index} post={post} />}
+// 게시글이 지워질 가능성이 있을 경우나 중간에 추가, 순서가 달라질 수 있을 때에도 key에 index를 쓰면 안 된다
+// 다만 반복문이 있고 바뀔 가능성이 없을 때 key를 index로 사용해도 된다
+```
+
+그리고 배열 안에 JSX(컴포넌트, \<PostCard\>처럼)안에 key를 줘야한다
+
+### Nextjs onFinish preventDefault
+
+```react
+<Form onFinish={onSubmitForm}>
+```
+
+onFinish는 이미 preventDefault가 정의되어 있음
+
+---
+
+### useCallback과 useMemo 차이
+
+useCallback: 함수 캐싱<br />
+useMemo: 값 캐싱
+
+```react
+const onChangeId = useCallback((e) => {
+  setId(e.target.value);
+}, []);
+
+const style = useMemo(
+  () => ({
+    marginTop: 10,
+  }),
+  []
+);
+
+<ButtonWrapper style={style}>버튼</ButtonWrapper>
+```
+
+---
+
+### 인라인 스타일 {} === {}: false
+
+```react
+{% raw %}<div style={{ marginTop: "10px" }}></div>{% endraw %}
+```
+
+이런식으로 코딩하면 리렌더링 될 때마다 페이지 return()함수가 실행되는데<br />
+{} === {} : false이기 때문에 이전 버전이랑 검사하면서 바뀐 부분만 리렌더링하는데 저 부분을 바뀐게 없어도 리렌더링해버린다.
+
+그래서 쓰는게 **styled-components**
+
+---
+
+### useCallback 최적화
+
+컴포넌트에 props로 넘겨주는 함수는 useCallback을 꼭 써야 최적화가 된다.
+
+```javascript
+const onSubmitForm = useCallback(() => {}, []);
+```
+
+```react
+<Form onFinish={onSubmitForm}>...</Form>
+```
+
+---
+
+### noreferrer noopner
+
+```react
+<a href="https://www.naver.com" target="_blank" rel="noreferrer noopner">
+  Made by Naver
+</a>
+```
+
+rel="noreferrer noopner" 는 보안 위협 제거 해준다.
+
+---
+
+### 반응형 디자인 개발 순서
+
+반응형 디자인할 때 작은거 -> 큰거 순으로 개발
+모바일 -> 데스크탑순
+
+---
+
+### Nextjs 모든 페이지에 적용
+
+Next는 기본적으로 Webpack 내장되어 있음
+CSS 파일을 보는 순간 스타일태그를 HTML로 넣어준다.
+
+모든 페이지에 적용시킬 때 pages/\_app.js 파일에 코드 작성
+
+```react
+// pages/_app.js 예)
+import Head from "next/head";
+import "antd/dist/antd.css";
+
+const NodeBird = ({ Component }) => {
+  return (
+    <>
+      <Head>
+        <meta charSet="utf-8" />
+        <title>NodeBird</title>
+      </Head>
+      <Component />
+    </>
+  );
+};
+
+...
+```
+
+pages/\_app.js의 { Component }는 pages 파일들의(index, profile, signup 등등) 부모라고 생각하면 된다.
+
+---
+
+### CORS
+
+브라우저 - 백엔드 서버 간에 CORS 설정 해줘야 한다.
+
+---
+
+### npmtrends.com
+
+npmtrends.com : npm 다운로드 수 비교
+
+\_app.js파일은 pages 페이지들의 공통 페이지
+
+html의 head부분을 바꾸고 싶을 땐 \_app.js/import Head from 'next/head'
+
+---
+
+### Nextjs SSR
+
+Next.js는 SSR을 쉽게 만들어 줌<br />
+
+```javascript
+import Ract from 'react'; // Nextjs에서 작성하지 않아도 됨
+```
+
+Next.js는 pages 폴더를 인식하기 때문에 pages 폴더는 꼭 있어야 한다.<br />
+
+주소 동적 라우팅할 때 [name].js 대괄호를 붙이면 된다.
+
+---
+
+### SEO
+
+검색엔진에서 처음 로딩 페이지가 나오면 이 페이지는 컨텐츠가 없다고 판단하여 검색엔진에서 순위가 확 떨어질 수 있다.<br />
+구글 검색엔진은 똑똑해서 조금 기다리면 데이터가 온다는걸 알지만 다른 검색엔진은 그렇지 않다.<br />
+
+검색엔진에서는 모든 데이터를 불러오는 <span style="color:#fe5783"><u>서버 사이드 렌더링 (SSR)</u></span><br />
+
+<span style='font-size: 14px'>
+  브라우저 (Blog 페이지 요청) -> 프론트 서버 (post 요청) -> 백엔드 서버 (실제 데이터 요청) ->
+  데이터베이스
+  <br />
+  데이터베이스 (실제 데이터 전달)-> 백엔드 서버 (post 전달) -> 프론트 서버 (Blog 페이지 전달) ->
+  브라우저
+</span>
+
+방문한 페이지만 보여주는 <span style="color:#fe5783"><u>클라이언트 사이드 렌더링 (CSR) 또는 Single Page Application (SPA)</u></span><br />
+
+<span style='font-size: 14px'>
+  브라우저 -> 프론트 서버 (어떤 페이지를 요청하던 그 페이지의 HTML, CSS, JS, IMG정도만 전달) ->
+  브라우저 (화면은 그려지나 데이터가 없음)
+  <br />한 번더 요청을 보냄 브라우저 -> 백엔드 서버 (post) -> 데이터베이스 -> 백엔드 서버 -> 브라우저
+</span>
+
+프리렌더는 검색엔진일 경우 SSR 형식, 일반유저일 경우 CSR 형식 <br />
+근데 복잡하다
+
+SSR과 코드 스플릿은 무조건 적용시키는게 좋다<br />
+검색 엔진 노출, 최적화<br />
+적용할 필요 없는 페이지 -> admin 페이지<br />
