@@ -70,6 +70,18 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'CHOI BOO 블로그',
+        short_name: 'CHOI BOO 블로그',
+        start_url: '/',
+        background_color: '#FFF',
+        theme_color: '#B980F0',
+        display: 'standalone',
+        icon: `${__dirname}/static/images/favicon.png`,
+      },
+    },
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
