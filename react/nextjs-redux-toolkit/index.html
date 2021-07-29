@@ -1,0 +1,338 @@
+<!DOCTYPE html><html lang="ko"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.e53586a225ffdde20c86.css" id="gatsby-global-css">code[class*=language-],pre[class*=language-]{word-wrap:normal;background:none;color:#ccc;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;text-align:left;white-space:pre;word-break:normal;word-spacing:normal}pre[class*=language-]{margin:.5em 0;overflow:auto;padding:1em}:not(pre)>code[class*=language-],pre[class*=language-]{background:#2d2d2d}:not(pre)>code[class*=language-]{border-radius:.3em;padding:.1em;white-space:normal}.token.block-comment,.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#999}.token.punctuation{color:#ccc}.token.attr-name,.token.deleted,.token.namespace,.token.tag{color:#e2777a}.token.function-name{color:#6196cc}.token.boolean,.token.function,.token.number{color:#f08d49}.token.class-name,.token.constant,.token.property,.token.symbol{color:#f8c555}.token.atrule,.token.builtin,.token.important,.token.keyword,.token.selector{color:#cc99cd}.token.attr-value,.token.char,.token.regex,.token.string,.token.variable{color:#7ec699}.token.entity,.token.operator,.token.url{color:#67cdcc}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}.token.inserted{color:green}</style><meta name="generator" content="Gatsby 3.6.2"/><title data-react-helmet="true">[Nextjs, Redux] Nextjs + Redux-Toolkit + Typescript (with Hooks)</title><meta data-react-helmet="true" name="description" content="get[Static, ServerSide]Props는 아직 제외. 추후에 추가 예정"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1.0"/><meta data-react-helmet="true" http-equiv="Content-Type" content="text/html;charset=UTF-8"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:title" content="[Nextjs, Redux] Nextjs + Redux-Toolkit + Typescript (with Hooks)"/><meta data-react-helmet="true" property="og:description" content="get[Static, ServerSide]Props는 아직 제외. 추후에 추가 예정"/><meta data-react-helmet="true" property="og:image" content="/static/278efc06a08028148932e21e3890c27b/profile-image.jpg"/><meta data-react-helmet="true" property="og:url"/><meta data-react-helmet="true" property="og:site_name" content="[Nextjs, Redux] Nextjs + Redux-Toolkit + Typescript (with Hooks)"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:title" content="[Nextjs, Redux] Nextjs + Redux-Toolkit + Typescript (with Hooks)"/><meta data-react-helmet="true" name="twitter:description" content="get[Static, ServerSide]Props는 아직 제외. 추후에 추가 예정"/><meta data-react-helmet="true" name="twitter:image" content="/static/278efc06a08028148932e21e3890c27b/profile-image.jpg"/><meta data-react-helmet="true" name="twitter:site" content="qnrjs42"/><meta data-react-helmet="true" name="twitter:creator" content="qnrjs42"/><link rel="sitemap" type="application/xml" href="/sitemap/sitemap-index.xml"/><link rel="canonical" href="https://qnrjs42.github.io/react/nextjs-redux-toolkit" data-baseprotocol="https:" data-basehost="qnrjs42.github.io"/><link as="script" rel="preload" href="/webpack-runtime-4292c1a06670c11f9751.js"/><link as="script" rel="preload" href="/framework-5e3d4780375f89bdbdfb.js"/><link as="script" rel="preload" href="/app-c95770e9d02cb5a096f2.js"/><link as="script" rel="preload" href="/cb1608f2-7e431c201fe165b2d0a8.js"/><link as="script" rel="preload" href="/a9a7754c-4fbbdcf717ee179cdd3f.js"/><link as="script" rel="preload" href="/cc70aca9eab9f65c296a3f192f3ae5d21ffd316a-5bf649dc12ebce2d602c.js"/><link as="script" rel="preload" href="/component---src-templates-post-template-tsx-9bc07625bd43b4b1a6af.js"/><link as="fetch" rel="preload" href="/page-data/react/nextjs-redux-toolkit/page-data.json" crossorigin="anonymous"/><link as="fetch" rel="preload" href="/page-data/app-data.json" crossorigin="anonymous"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" id="gatsby-focus-wrapper"><style data-emotion="css 1u4knlt">.css-1u4knlt{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;height:100vh;color:rgb(61, 61, 63);font-size:16px;}@media (max-width: 414px){.css-1u4knlt{font-size:14px;}}@media (max-width: 320px){.css-1u4knlt{font-size:12px;}}</style><main class="css-1u4knlt e17pn9rd0"><style data-emotion="css-global 1fwjl13">@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css');*{padding:0;margin:0;box-sizing:border-box;font-family:Pretendard,-apple-system,'Apple SD Gothic Neo','Nanum Myeongjo',sans-serif;}html,body,#___gatsby{height:100%;}a,a:hover{color:inherit;-webkit-text-decoration:none;text-decoration:none;cursor:pointer;}</style><style data-emotion="css 5cwj1i">.css-5cwj1i{width:100%;border-bottom:1px solid rgb(230, 230, 230);color:rgb(61, 61, 63);}</style><header class="css-5cwj1i ewjhl9o8"><style data-emotion="css zm323v">.css-zm323v{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;max-width:1024px;height:60px;margin:0 auto;}@media (max-width: 1024px){.css-zm323v{width:100%;padding:0 20px;}}</style><div class="css-zm323v ewjhl9o7"><style data-emotion="css fhxb3m">.css-fhxb3m{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}</style><div class="css-fhxb3m ewjhl9o6"><a href="/"><h3 class="css-0 ewjhl9o5">CHOI BOO 블로그</h3></a><style data-emotion="css 3i1y2s">.css-3i1y2s{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;margin-left:5px;margin-right:auto;}</style><nav class="css-3i1y2s ewjhl9o4"><a href="/categories"><style data-emotion="css nd6a9t">.css-nd6a9t{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-left:15px;}</style><div class="css-nd6a9t ewjhl9o3"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="bookmark" class="svg-inline--fa fa-bookmark fa-w-12 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" color="#B980F0"><path fill="currentColor" d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"></path></svg><style data-emotion="css 6j8eu5">.css-6j8eu5{margin-left:3px;}@media (max-width: 375px){.css-6j8eu5{display:none;}}</style><div class="css-6j8eu5 ewjhl9o1">카테고리</div></div></a><a href="/note/techknology"><div class="css-nd6a9t ewjhl9o3"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="journal-whills" class="svg-inline--fa fa-journal-whills fa-w-14 " role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" color="#B980F0"><path fill="currentColor" d="M438.40625,377.59375c-3.20313,12.8125-3.20313,57.60937,0,73.60937Q447.9922,460.78907,448,470.40625v16c0,16-12.79688,25.59375-25.59375,25.59375H96c-54.40625,0-96-41.59375-96-96V96C0,41.59375,41.59375,0,96,0H422.40625C438.40625,0,448,9.59375,448,25.59375v332.8125Q448,372.79688,438.40625,377.59375ZM380.79688,384H96c-16,0-32,12.79688-32,32s12.79688,32,32,32H380.79688ZM128.01562,176.01562c0,.51563.14063.98438.14063,1.5l37.10937,32.46876A7.99954,7.99954,0,0,1,160,224h-.01562a9.17678,9.17678,0,0,1-5.25-1.98438L131.14062,201.375C142.6875,250.95312,186.90625,288,240,288s97.3125-37.04688,108.875-86.625l-23.59375,20.64062a8.02516,8.02516,0,0,1-5.26563,1.96876H320a9.14641,9.14641,0,0,1-6.01562-2.71876A9.26508,9.26508,0,0,1,312,216a9.097,9.097,0,0,1,2.73438-6.01562l37.10937-32.46876c.01563-.53124.15625-1,.15625-1.51562,0-11.04688-2.09375-21.51562-5.06251-31.59375l-21.26562,21.25a8.00467,8.00467,0,0,1-11.32812-11.3125l26.42187-26.40625a111.81517,111.81517,0,0,0-46.35937-49.26562,63.02336,63.02336,0,0,1-14.0625,82.64062A55.83846,55.83846,0,0,1,251.625,254.73438l-1.42188-34.28126,12.67188,8.625a3.967,3.967,0,0,0,2.25.6875,3.98059,3.98059,0,0,0,3.43749-6.03124l-8.53124-14.3125,17.90625-3.71876a4.00647,4.00647,0,0,0,0-7.84374l-17.90625-3.71876,8.53124-14.3125a3.98059,3.98059,0,0,0-3.43749-6.03124,4.726,4.726,0,0,0-2.25.67187L248.6875,184.125,244,71.82812a4.00386,4.00386,0,0,0-8,0l-4.625,110.8125-12-8.15624a4.003,4.003,0,0,0-5.68751,5.35937l8.53126,14.3125L204.3125,197.875a3.99686,3.99686,0,0,0,0,7.82812l17.90625,3.73438-8.53126,14.29688a4.72469,4.72469,0,0,0-.56249,2.04687,4.59547,4.59547,0,0,0,1.25,2.90625,4.01059,4.01059,0,0,0,2.75,1.09375,4.09016,4.09016,0,0,0,2.25-.6875l10.35937-7.04687L228.375,254.76562a55.86414,55.86414,0,0,1-28.71875-93.45312,63.01119,63.01119,0,0,1-14.04688-82.65625,111.93158,111.93158,0,0,0-46.375,49.26563l26.42187,26.42187a7.99917,7.99917,0,0,1-11.3125,11.3125l-21.26563-21.26563C130.09375,154.48438,128,164.95312,128.01562,176.01562Z"></path></svg><div class="css-6j8eu5 ewjhl9o1">문서</div></div></a></nav><style data-emotion="css 751w7w">.css-751w7w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}@media (max-width: 375px){.css-751w7w{display:none;}}</style><div class="css-751w7w ewjhl9o0"><a href="/about"><div class="css-nd6a9t ewjhl9o3"><style data-emotion="css 1k82171">.css-1k82171{font-size:1.25em;}</style><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user-circle" class="svg-inline--fa fa-user-circle fa-w-16  css-1k82171 ewjhl9o2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z"></path></svg></div></a><div class="css-nd6a9t ewjhl9o3"><a href="https://github.com/qnrjs42" target="_blank" rel="noreferrer noopener"><svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" class="svg-inline--fa fa-github fa-w-16  css-1k82171 ewjhl9o2" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg></a></div></div></div></div></header><style data-emotion="css 3cf5y">.css-3cf5y{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;width:768px;margin:0 auto;margin-top:60px;margin-bottom:20px;}@media (max-width: 768px){.css-3cf5y{width:100%;padding:0px 20px;}}</style><section class="css-3cf5y e1yj0w164"><style data-emotion="css 8cete2">.css-8cete2{font-size:2.625em;color:#B980F0;margin-bottom:8px;}</style><h1 class="css-8cete2 e1yj0w163">[Nextjs, Redux] Nextjs + Redux-Toolkit + Typescript (with Hooks)</h1><style data-emotion="css 9n8d4o">.css-9n8d4o{font-size:1em;font-weight:400;opacity:0.7;margin-bottom:16px;}</style><div class="css-9n8d4o e1yj0w162">2021.03.31</div><style data-emotion="css jovua5">.css-jovua5{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-box-flex-wrap:wrap;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;}</style><div class="css-jovua5 e1yj0w161"><style data-emotion="css t4l0m6">.css-t4l0m6{margin-right:20px;margin-bottom:10px;background-color:rgb(241, 243, 245);border-radius:1rem;padding:5px 10px;color:#B980F0;}</style><div class="css-t4l0m6 e1yj0w160">React</div><div class="css-t4l0m6 e1yj0w160">Typescript</div><div class="css-t4l0m6 e1yj0w160">Redux</div><div class="css-t4l0m6 e1yj0w160">Redux-Toolkit</div></div></section><style data-emotion="css 13ly1mr">.css-13ly1mr{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;width:768px;margin:0 auto;padding:50px 0;word-break:break-all;color:rgb(61, 61, 63);line-height:1.8;font-size:16px;font-weight:400;}.css-13ly1mr deckgo-highlight-code{margin:10px 0 20px 0;}.css-13ly1mr p{padding:3px 0;}.css-13ly1mr h1,.css-13ly1mr h2,.css-13ly1mr h3{font-weight:800;margin-bottom:30px;}.css-13ly1mr *+h1,.css-13ly1mr *+h2{margin-top:60px;}.css-13ly1mr *+h3{margin-top:30px;}.css-13ly1mr hr+h1,.css-13ly1mr hr+h2,.css-13ly1mr hr+h3{margin-top:0;}.css-13ly1mr h1{font-size:1.875em;}.css-13ly1mr h2{font-size:1.5625em;}.css-13ly1mr h3{font-size:1.25em;}.css-13ly1mr blockquote{margin:30px 0;padding:5px 15px;border-left:2px solid #000000;font-weight:800;}.css-13ly1mr ol,.css-13ly1mr ul{margin-left:20px;}.css-13ly1mr hr{border:1px solid #000000;margin:100px 0;}.css-13ly1mr a{color:#B980F0;-webkit-text-decoration:underline;text-decoration:underline;}.css-13ly1mr pre[class*='language-']{margin:30px 0;padding:15px;font-size:15px;}.css-13ly1mr pre[class*='language-']::-webkit-scrollbar-thumb{background:rgba(255, 255, 255, 0.5);border-radius:3px;}.css-13ly1mr code[class*='language-'],.css-13ly1mr pre[class*='language-']{tab-size:2;}@media (max-width: 768px){.css-13ly1mr{width:100%;padding:20px 20px;line-height:1.6;font-size:14px;}.css-13ly1mr img{width:100%;}.css-13ly1mr hr{margin:50px 0;}}</style><section class="css-13ly1mr elj7atq0"><blockquote><p>21.03.31 수 업데이트</p><blockquote><p>useSelector 타입추론 추가 (공식문서 참고)</p></blockquote></blockquote><p>redux는 꽤나 typescript를 적용하는데 애를 먹었다.</p><p>지금 막 테스트를 해본거라 서버도 없으니(귀찮) get<!-- -->[Static, ServerSide]<!-- -->Props는 나중에 추가할 것이다.</p><p><code>dispatch</code>까지 알아보겠다.</p><p>redux-toolkit에 대한 설명은 아래 링크에서</p><p>참고 Link: <a href="https://github.com/qnrjs42/redux_toolkit_mobx" title="Go">https://github.com/qnrjs42/redux_toolkit_mobx</a></p><p><strong>버전에 따라 달라질 수 있으니 유의해야한다!!!!!</strong></p><h2>필요한 모듈</h2><deckgo-highlight-code language="shell">
+          <code slot="code">npm i react-redux next-redux-wrapper @reduxjs/toolkit
+npm i -D @types/react-redux typescript</code>
+        </deckgo-highlight-code><deckgo-highlight-code language="json">
+          <code slot="code">// package.json
+{
+  &quot;name&quot;: &quot;next-front&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;next&quot;
+  },
+  &quot;author&quot;: &quot;qnrjs42&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;dependencies&quot;: {
+    &quot;@ant-design/icons&quot;: &quot;^4.4.0&quot;,
+    &quot;@reduxjs/toolkit&quot;: &quot;^1.5.0&quot;,
+    &quot;antd&quot;: &quot;^4.10.3&quot;,
+    &quot;next&quot;: &quot;^10.0.5&quot;,
+    &quot;next-redux-wrapper&quot;: &quot;^6.0.2&quot;,
+    &quot;react&quot;: &quot;^17.0.1&quot;,
+    &quot;react-dom&quot;: &quot;^17.0.1&quot;,
+    &quot;react-redux&quot;: &quot;^7.2.2&quot;,
+    &quot;styled-components&quot;: &quot;^5.2.1&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;@types/node&quot;: &quot;^14.14.21&quot;,
+    &quot;@types/react&quot;: &quot;^17.0.0&quot;,
+    &quot;@types/react-redux&quot;: &quot;^7.1.16&quot;,
+    &quot;@types/styled-components&quot;: &quot;^5.1.7&quot;,
+    &quot;eslint&quot;: &quot;^7.18.0&quot;,
+    &quot;eslint-plugin-import&quot;: &quot;^2.22.1&quot;,
+    &quot;eslint-plugin-react&quot;: &quot;^7.22.0&quot;,
+    &quot;eslint-plugin-react-hooks&quot;: &quot;^4.2.0&quot;,
+    &quot;typescript&quot;: &quot;^4.1.3&quot;
+  }
+}</code>
+        </deckgo-highlight-code><hr/><h2>store.ts</h2><deckgo-highlight-code language="ts">
+          <code slot="code">import { configureStore, getDefaultMiddleware, EnhancedStore } from &#x27;@reduxjs/toolkit&#x27;;
+import { createWrapper, MakeStore } from &#x27;next-redux-wrapper&#x27;;
+import slice from &#x27;../slices&#x27;;
+
+const devMode = process.env.NODE_ENV === &#x27;development&#x27;;
+
+const store = configureStore({
+  reducer: slice,
+  middleware: [...getDefaultMiddleware()],
+  devTools: devMode,
+});
+
+const setupStore = (context: any): EnhancedStore =&gt; store;
+
+const makeStore: MakeStore = (context) =&gt; setupStore(context);
+
+export const wrapper = createWrapper(makeStore, {
+  debug: devMode,
+});
+
+// 21.03.31 추가
+export type RootState = ReturnType&lt;typeof store.getState&gt;;
+export type AppDispatch = typeof store.dispatch;
+export default wrapper;</code>
+        </deckgo-highlight-code><hr/><h2>interface</h2><h3>user.ts</h3><deckgo-highlight-code language="ts">
+          <code slot="code">export interface IUser {
+  isLoggedIn: boolean;
+  user: any;
+  signUpdata?: any;
+  loginData?: any;
+}</code>
+        </deckgo-highlight-code><h3>post.ts</h3><deckgo-highlight-code language="ts">
+          <code slot="code">// 예시로 들었기 때문에 posts는 그냥 뼈대만 있는거라고 생각하면 된다.
+export interface IPost {}</code>
+        </deckgo-highlight-code><hr/><h2>slices/index.ts</h2><deckgo-highlight-code language="ts">
+          <code slot="code">import { combineReducers, AnyAction } from &#x27;@reduxjs/toolkit&#x27;;
+import { HYDRATE } from &#x27;next-redux-wrapper&#x27;;
+import users from &#x27;./users&#x27;;
+import posts from &#x27;./posts&#x27;;
+import { IUser } from &#x27;../interface/user&#x27;;
+import { IPost } from &#x27;../interface/post&#x27;;
+
+export interface State {
+  users: IUser;
+  posts: IPost;
+}
+
+const rootReducer = (state: State | undefined, action: AnyAction) =&gt; {
+  switch (action.type) {
+    case HYDRATE:
+      console.log(&#x27;HYDRATE&#x27;);
+      return action.payload;
+
+    default: {
+      const combineReducer = combineReducers({
+        users,
+        posts,
+      });
+      return combineReducer(state, action);
+    }
+  }
+};
+// 21.03.31 제거
+// export type RootState = ReturnType&lt;typeof rootReducer&gt;;
+export default rootReducer;</code>
+        </deckgo-highlight-code><h3>slice/users.ts</h3><deckgo-highlight-code language="ts">
+          <code slot="code">import { createSlice } from &#x27;@reduxjs/toolkit&#x27;;
+
+import { logInAction, logOutAction } from &#x27;../actions/users&#x27;;
+import { IUser } from &#x27;../interface/user&#x27;;
+
+const initialState: IUser = {
+  isLoggedIn: false,
+  user: null,
+};
+
+export const users = createSlice({
+  name: &#x27;users&#x27;,
+  initialState,
+  reducers: {},
+  extraReducers: (builder) =&gt;
+    builder
+      // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
+      .addCase(logInAction.pending, (state, action) =&gt; {})
+      .addCase(logInAction.fulfilled, (state, action) =&gt; {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+      })
+      .addCase(logInAction.rejected, (state, action) =&gt; {})
+
+      .addCase(logOutAction.pending, (state, action) =&gt; {})
+      .addCase(logOutAction.fulfilled, (state, action) =&gt; {})
+      .addCase(logOutAction.rejected, (state, action) =&gt; {})
+      .addDefaultCase(() =&gt; {}),
+});
+
+export default users.reducer;</code>
+        </deckgo-highlight-code><h3>slice/posts.ts</h3><deckgo-highlight-code language="ts">
+          <code slot="code">// 예시로 들었기 때문에 posts는 그냥 뼈대만 있는거라고 생각하면 된다. (users 복사본)
+
+import { createSlice } from &#x27;@reduxjs/toolkit&#x27;;
+
+import { logInAction } from &#x27;../actions/users&#x27;;
+import { IPost } from &#x27;../interface/post&#x27;;
+
+const initialState: IPost = {};
+
+export const posts = createSlice({
+  name: &#x27;posts&#x27;,
+  initialState,
+  reducers: {},
+  extraReducers: (builder) =&gt;
+    builder
+      // builder의 addCase는 typescript의 타입 추론 사용할 때 편하다.
+      .addCase(logInAction.pending, (state, action) =&gt; {})
+      .addCase(logInAction.fulfilled, (state, action) =&gt; {})
+      .addCase(logInAction.rejected, (state, action) =&gt; {})
+
+      .addDefaultCase(() =&gt; {}),
+});
+
+export default posts.reducer;</code>
+        </deckgo-highlight-code><hr/><h2>hooks/useSelector.ts</h2><ul><li>21.03.31 추가</li></ul><deckgo-highlight-code language="ts">
+          <code slot="code">import { TypedUseSelectorHook, useSelector } from &#x27;react-redux&#x27;;
+import { RootState } from &#x27;store&#x27;;
+
+export const useAppSelector: TypedUseSelectorHook&lt;RootState&gt; = useSelector;</code>
+        </deckgo-highlight-code><hr/><h2>actions/users.ts</h2><deckgo-highlight-code language="ts">
+          <code slot="code">import { createAsyncThunk } from &#x27;@reduxjs/toolkit&#x27;;
+
+import { IUser } from &#x27;../interface/user&#x27;;
+
+interface rejectMessage {
+  errorMessage: string;
+}
+
+// 아무것도 없음
+export const logOutAction = createAsyncThunk(&#x27;user/logOut&#x27;, async (data, thnukAPI) =&gt; {});
+
+export const logInAction = createAsyncThunk&lt;IUser, any, { rejectValue: rejectMessage }&gt;(
+  &#x27;user/logIn&#x27;,
+  async (data) =&gt; {
+    console.log(data, &#x27;logIn action&#x27;);
+
+    return data;
+  },
+);</code>
+        </deckgo-highlight-code><hr/><h2>pages/<!-- -->_<!-- -->app.tsx</h2><deckgo-highlight-code language="tsx">
+          <code slot="code">import React from &#x27;react&#x27;;
+import Head from &#x27;next/head&#x27;;
+import { AppContext } from &#x27;next/app&#x27;;
+import &#x27;antd/dist/antd.css&#x27;;
+
+import wrapper from &#x27;../store&#x27;;
+
+const App = ({ Component }: AppContext) =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Head&gt;
+        &lt;meta charSet=&#x27;utf-8&#x27; /&gt;
+        &lt;title&gt;App&lt;/title&gt;
+      &lt;/Head&gt;
+      &lt;Component /&gt;
+    &lt;/&gt;
+  );
+};
+
+export default wrapper.withRedux(App);</code>
+        </deckgo-highlight-code><hr/><h2>components/AppLayout.tsx</h2><ul><li>21.03.31 변경</li></ul><deckgo-highlight-code language="tsx">
+          <code slot="code">import React from &#x27;react&#x27;;
+import Link from &#x27;next/link&#x27;;
+import styled from &#x27;styled-components&#x27;;
+import { useSelector } from &#x27;react-redux&#x27;;
+import { Menu, Input, Row, Col } from &#x27;antd&#x27;;
+
+import LoginForm from &#x27;./LoginForm&#x27;;
+import UserProfile from &#x27;./UserProfile&#x27;;
+import { IUser } from &#x27;../interface/user&#x27;;
+import { useAppSelector } from &#x27;../hooks/useSelector&#x27;;
+
+interface IProps {
+  children: React.ReactNode;
+}
+
+const SearchInput = styled(Input.Search)`
+  vertical-align: &#x27;middle&#x27;;
+`;
+
+const AppLayout = ({ children }: IProps) =&gt; {
+  // 21.03.31 추가
+  const isLoggedIn = useSelector((state) =&gt; state.users.isLoggedIn);
+  // 21.03.31 제거
+  // const isLoggedIn = useSelector&lt;RootState, boolean&gt;((state) =&gt; state.users.isLoggedIn);
+
+  console.log(&#x27;&gt;&gt;&gt;&#x27;, isLoggedIn);
+
+  return (
+    &lt;&gt;
+      &lt;Menu mode=&#x27;horizontal&#x27;&gt;
+        &lt;Menu.Item&gt;
+          &lt;Link href=&#x27;/&#x27;&gt;
+            &lt;a&gt;홈&lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Menu.Item&gt;
+        &lt;Menu.Item&gt;
+          &lt;Link href=&#x27;/profile&#x27;&gt;
+            &lt;a&gt;프로필&lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Menu.Item&gt;
+        &lt;Menu.Item&gt;
+          &lt;SearchInput enterButton /&gt;
+        &lt;/Menu.Item&gt;
+        &lt;Menu.Item&gt;
+          &lt;Link href=&#x27;/signup&#x27;&gt;
+            &lt;a&gt;회원가입&lt;/a&gt;
+          &lt;/Link&gt;
+        &lt;/Menu.Item&gt;
+      &lt;/Menu&gt;
+      &lt;Row gutter={8}&gt;
+        &lt;Col xs={24} md={6}&gt;
+          {isLoggedIn ? &lt;UserProfile /&gt; : &lt;LoginForm /&gt;}
+        &lt;/Col&gt;
+        &lt;Col xs={24} md={12}&gt;
+          {children}
+        &lt;/Col&gt;
+        &lt;Col xs={24} md={6}&gt;
+          &lt;a href=&#x27;https://github.com/qnrjs42&#x27; target=&#x27;_blank&#x27; rel=&#x27;noreferrer noopener&#x27;&gt;
+            Made by Choi Boo
+          &lt;/a&gt;
+        &lt;/Col&gt;
+      &lt;/Row&gt;
+    &lt;/&gt;
+  );
+};
+
+export default AppLayout;</code>
+        </deckgo-highlight-code><hr/><h2>components/LoginForm.tsx</h2><deckgo-highlight-code language="tsx">
+          <code slot="code">import React, { useCallback } from &#x27;react&#x27;;
+import { Form, Input, Button } from &#x27;antd&#x27;;
+import Link from &#x27;next/link&#x27;;
+import styled from &#x27;styled-components&#x27;;
+import useInput from &#x27;../hooks/useInput&#x27;;
+import { useDispatch } from &#x27;react-redux&#x27;;
+import { logInAction } from &#x27;../actions/users&#x27;;
+
+const ButtonWrapper = styled.div`
+  margin-top: 10px;
+`;
+
+const FormWrapper = styled(Form)`
+  padding: 10px;
+`;
+
+interface IProps {}
+
+const LoginForm = () =&gt; {
+  const dispatch = useDispatch();
+  const [id, onChangeId] = useInput(&#x27;&#x27;);
+  const [password, onChangePassword] = useInput(&#x27;&#x27;);
+
+  const onSubmitForm = useCallback(() =&gt; {
+    console.log(id, password);
+    dispatch(
+      logInAction({
+        id,
+        password,
+      }),
+    );
+  }, [id, password]);
+
+  return (
+    &lt;FormWrapper onFinish={onSubmitForm}&gt;
+      &lt;div&gt;
+        &lt;label htmlFor=&#x27;user-id&#x27;&gt;아이디&lt;/label&gt;
+        &lt;br /&gt;
+        &lt;Input name=&#x27;user-id&#x27; value={id} onChange={onChangeId} required /&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;label htmlFor=&#x27;user-password&#x27;&gt;패스워드&lt;/label&gt;
+        &lt;br /&gt;
+        &lt;Input name=&#x27;user-password&#x27; value={password} onChange={onChangePassword} required /&gt;
+      &lt;/div&gt;
+      &lt;ButtonWrapper&gt;
+        &lt;Button type=&#x27;primary&#x27; htmlType=&#x27;submit&#x27; loading={false}&gt;
+          로그인
+        &lt;/Button&gt;
+        &lt;Link href=&#x27;/signup&#x27;&gt;
+          &lt;a&gt;
+            &lt;Button&gt;회원가입&lt;/Button&gt;
+          &lt;/a&gt;
+        &lt;/Link&gt;
+      &lt;/ButtonWrapper&gt;
+      &lt;div&gt;&lt;/div&gt;
+    &lt;/FormWrapper&gt;
+  );
+};
+
+export default LoginForm;</code>
+        </deckgo-highlight-code><hr/><h2>이미지로 상태 변화 보기</h2><h3>처음 실행했을 때</h3><ul><li>크롬-개발자 도구-콘솔에서 처음 실행했을 때 해당 로그가 출력되어야 <code>next-redux-wrapper</code>가 제대로 실행된걸 알 수 있다.</li></ul><img src="/images/nextjs-redux-toolkit/1.png" width="100%"/><h3>로그인폼에 아이디/패스워드 입력</h3><img src="/images/nextjs-redux-toolkit/2.png" width="50%"/><h3>로그인 성공</h3><img src="/images/nextjs-redux-toolkit/3.png" width="50%"/><h3>로그인 성공 후 로그</h3><ul><li>1 line log: <code>components/LoginForm.tsx</code>에서 <code>dispatch</code>하기 전</li><li>2 line log: <code>actions/users.ts</code>에서 <code>logInAction</code>안에서</li><li>3 line log: <code>components/AppLayout.tsx</code>에서 <code>useSelector</code>로 <code>isLoggedIn</code>가져온 후</li></ul><img src="/images/nextjs-redux-toolkit/4.png" width="100%"/><h3>redux 상태 변화 / State / pending</h3><img src="/images/nextjs-redux-toolkit/5.png" width="100%"/><h3>redux 상태 변화 / Diff / pending</h3><img src="/images/nextjs-redux-toolkit/6.png" width="100%"/><h3>redux 상태 변화 / Diff / fulfilled</h3><img src="/images/nextjs-redux-toolkit/7.png" width="100%"/><h3>redux 상태 변화 / State/ fulfilled</h3><img src="/images/nextjs-redux-toolkit/8.png" width="100%"/><hr/><h2>참고 링크</h2><ul><li><p><a href="https://redux-toolkit.js.org/usage/usage-with-typescript" title="Go">https://redux-toolkit.js.org/usage/usage-with-typescript</a></p></li><li><p><a href="https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops" title="Go">https://stackoverflow.com/questions/64139344/how-to-use-typescript-next-redux-wrapper-getserversideprops</a></p></li><li><p><a href="https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/" title="Go">https://maruzzing.github.io/study/react/Redux-toolkit%EC%9D%84-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%83%81%ED%83%9C%EA%B4%80%EB%A6%AC-1/</a></p></li><li><p><a href="https://github.com/qnrjs42/UrlCut_Project/tree/master/front" title="Go">https://github.com/qnrjs42/UrlCut_Project/tree/master/front</a></p></li></ul></section><style data-emotion="css w6aqqx">.css-w6aqqx{display:grid;place-items:center;margin-top:auto;padding:50px 0;font-size:0.875em;text-align:center;line-height:1.5;}</style><footer class="css-w6aqqx e1f2kxnr0">© CHOI BOO 2021</footer></main></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/react/nextjs-redux-toolkit";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"polyfill":["/polyfill-2ccdf0a850fd85d97516.js"],"app":["/app-c95770e9d02cb5a096f2.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-55f0bfb10bf251b7a996.js"],"component---src-pages-about-index-tsx":["/component---src-pages-about-index-tsx-d7de92862464ecfa0e8e.js"],"component---src-pages-categories-index-tsx":["/component---src-pages-categories-index-tsx-86062657ce14ba7eb02d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-8f3bd5c6c44d0ab1b61d.js"],"component---src-pages-info-tsx":["/component---src-pages-info-tsx-e105bdd70da6541c29cc.js"],"component---src-templates-post-template-tsx":["/component---src-templates-post-template-tsx-9bc07625bd43b4b1a6af.js"]};/*]]>*/</script><script src="/polyfill-2ccdf0a850fd85d97516.js" nomodule=""></script><script src="/component---src-templates-post-template-tsx-9bc07625bd43b4b1a6af.js" async=""></script><script src="/cc70aca9eab9f65c296a3f192f3ae5d21ffd316a-5bf649dc12ebce2d602c.js" async=""></script><script src="/a9a7754c-4fbbdcf717ee179cdd3f.js" async=""></script><script src="/cb1608f2-7e431c201fe165b2d0a8.js" async=""></script><script src="/app-c95770e9d02cb5a096f2.js" async=""></script><script src="/framework-5e3d4780375f89bdbdfb.js" async=""></script><script src="/webpack-runtime-4292c1a06670c11f9751.js" async=""></script></body></html>

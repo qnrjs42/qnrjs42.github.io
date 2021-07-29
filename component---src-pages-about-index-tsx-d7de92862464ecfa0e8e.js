@@ -1,0 +1,2 @@
+(self.webpackChunkqnrjs42_blog=self.webpackChunkqnrjs42_blog||[]).push([[154],{1226:function(t,e,i){"use strict";i.r(e);i(7294);var l=i(2010),a=i(1480),n=i(1243);e.default=function(t){var e=t.data,i=e.file.publicURL,r=e.site.siteMetadata;return(0,n.tZ)(a.Z,{title:r.title,description:r.description,url:r.siteUrl+"/about",image:i},(0,n.tZ)(l.Z,null))}}}]);
+//# sourceMappingURL=component---src-pages-about-index-tsx-d7de92862464ecfa0e8e.js.map
