@@ -126,6 +126,8 @@ module.exports = {
           {
             resolve: 'gatsby-plugin-robots-txt',
             options: {
+              host: 'https://qnrjs42.github.io/',
+              setmap: 'https://qnrjs42.github.io/sitemap/sitemap-index.xml'
               policy: [{ userAgent: '*', allow: '/' }],
             },
           },
