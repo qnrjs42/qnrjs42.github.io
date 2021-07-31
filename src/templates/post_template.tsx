@@ -7,6 +7,7 @@ import Header from '@components/Common/Header';
 import Template from '@components/Common/Template';
 import PostHeader from '@components/Post/PostHeader';
 import PostContent from '@components/Post/PostContent';
+import CommentWidget from '@components/Post/CommentWidget';
 
 export interface PostHeadInfoProps {
   title: string;
@@ -52,6 +53,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = ({
       <PostHeader title={title} date={date} categories={categories} />
       {children}
       <PostContent body={body} />
+      <CommentWidget />
     </Template>
   );
 };
